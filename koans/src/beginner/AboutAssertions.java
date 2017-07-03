@@ -73,6 +73,7 @@ public class AboutAssertions {
     public void assertNotSameInstance() {
         Integer same = new Integer(1);
         Integer sameReference = same;
-        assertNotSame(same, same);
+        Integer bob;
+        assertNotSame(same,bob);
     }
 }
