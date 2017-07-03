@@ -10,7 +10,7 @@ public class AboutAssertions {
     @Koan
     public void assertBooleanTrue() {
         // there are two possibilities, true or false, what would it be here?
-        assertTrue(__);
+        assertTrue(1);
     }
 
     @Koan
