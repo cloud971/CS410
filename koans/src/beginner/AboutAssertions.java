@@ -22,7 +22,7 @@ public class AboutAssertions {
     public void assertNullObject() {
         // reference to the object can be null, a magic keyword, null, which means
         // that there is nothing there
-        assertNull(__);
+        assertNull(null);
     }
 
     @Koan
