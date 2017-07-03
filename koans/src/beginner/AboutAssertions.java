@@ -66,7 +66,7 @@ public class AboutAssertions {
         // It's only the same if the reference is the same.
         Object same = new Integer(1);
         Object sameReference = new Integer(1);
-        assertSame(same, sameReference);
+        assertSame(same, same);
     }
 
     @Koan
