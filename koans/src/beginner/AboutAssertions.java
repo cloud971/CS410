@@ -15,7 +15,7 @@ public class AboutAssertions {
 
     @Koan
     public void assertBooleanFalse() {
-        assertFalse(__);
+        assertFalse(false);
     }
 
     @Koan
