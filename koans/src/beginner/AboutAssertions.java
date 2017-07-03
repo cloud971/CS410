@@ -72,8 +72,7 @@ public class AboutAssertions {
     @Koan
     public void assertNotSameInstance() {
         Integer same = new Integer(1);
-        Integer sameReference = same;
-        Integer bob;
-        assertNotSame(same,bob);
+        Integer sameReference = new Integer(2);
+        assertNotSame(same, sameReference);
     }
 }
