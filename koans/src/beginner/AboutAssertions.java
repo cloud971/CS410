@@ -44,12 +44,12 @@ public class AboutAssertions {
 
     @Koan
     public void assertEqualsWithAFewExpressions() {
-        assertEquals("Hello World!", __);
-        assertEquals(1, __);
-        assertEquals(2 + 2, __);
-        assertEquals(2 * 3, __);
-        assertEquals(3 - 8, __);
-        assertEquals(10 / 2, __);
+        assertEquals("Hello World!", "Hello World!");
+        assertEquals(1,1);
+        assertEquals(2 + 2, 4);
+        assertEquals(2 * 3, 6);
+        assertEquals(3 - 8, -5);
+        assertEquals(10 / 2, 5);
     }
 
     @Koan
