@@ -113,11 +113,11 @@ public class AboutStrings {
 
     @Koan
     public void stringEndsWith() {
-        assertEquals("".endsWith("one"), __);
-        assertEquals("one".endsWith("one"), __);
-        assertEquals("the number is one".endsWith("one"), __);
-        assertEquals("the number is two".endsWith("one"), __);
-        assertEquals("the number is One".endsWith("one"), __);
+        assertEquals("".endsWith("one"), "wrong".endsWith(""));
+        assertEquals("one".endsWith("one"), "bob".endsWith("bob"));
+        assertEquals("the number is one".endsWith("one"), "i am eating".endsWith("eating"));
+        assertEquals("the number is two".endsWith("one"), "wrong answer".endsWith("wrong"));
+        assertEquals("the number is One".endsWith("one"), "very wrong".endsWith("right"));
     }
 
     @Koan
