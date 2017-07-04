@@ -35,8 +35,8 @@ public class AboutEquality {
     public void equalsMethodCanBeChangedBySubclassesToTestsIfTwoObjectsAreEqualExample() {
         Integer value1 = new Integer(4);
         Integer value2 = new Integer(2 + 2);
-        assertEquals(value1.equals(value2), __);
-        assertEquals(value1, __);
+        assertEquals(value1.equals(value2), value2.equals(value1));
+        assertEquals(value1, value2);
     }
 
     @Koan
