@@ -40,11 +40,12 @@ public class AboutStrings {
 
     @Koan
     public void stringIsEmpty() {
-        assertEquals("".isEmpty(), null);
-        assertEquals("one".isEmpty(), null);
-        assertEquals(new String().isEmpty(), null);
-        assertEquals(new String("").isEmpty(), null);
-        assertEquals(new String("one").isEmpty(), null);
+
+        assertEquals("".isEmpty(), new String().isEmpty());
+        assertEquals("one".isEmpty(), "bob".isEmpty());
+        assertEquals(new String().isEmpty(), new String().isEmpty());
+        assertEquals(new String("").isEmpty(), new String().isEmpty());
+        assertEquals(new String("one").isEmpty(), new String("one").isEmpty());
     }
 
     @Koan
