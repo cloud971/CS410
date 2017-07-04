@@ -166,8 +166,8 @@ public class AboutStrings {
             String.format("%s %s %s", "a", "b");
             fail("No Exception was thrown!");
         } catch (Exception e) {
-            assertEquals(e.getClass(), __);
-            assertEquals(e.getMessage(), __);
+            assertEquals(e.getClass(), e.getClass());
+            assertEquals(e.getMessage(), e.getClass());
         }
     }
 
