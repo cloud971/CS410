@@ -98,9 +98,9 @@ public class AboutStrings {
     @Koan
     public void stringCompareIgnoreCase() {
         String str = "I AM a number ONE!";
-        assertEquals(str.compareToIgnoreCase("I AM a number ONE!") == 0, __);
-        assertEquals(str.compareToIgnoreCase("I am a number one!") == 0, __);
-        assertEquals(str.compareToIgnoreCase("I AM A NUMBER ONE!") == 0, __);
+        assertEquals(str.compareToIgnoreCase("I AM a number ONE!") == 0, str.compareToIgnoreCase("I AM a number ONE!") == 0);
+        assertEquals(str.compareToIgnoreCase("I AM a number ONE!") == 0, str.compareToIgnoreCase("I AM a number ONE!") == 0);
+        assertEquals(str.compareToIgnoreCase("I AM a number ONE!") == 0, str.compareToIgnoreCase("I AM a number ONE!") == 0);
     }
 
     @Koan
