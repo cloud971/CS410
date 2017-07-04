@@ -167,7 +167,7 @@ public class AboutStrings {
             fail("No Exception was thrown!");
         } catch (Exception e) {
             assertEquals(e.getClass(), e.getClass());
-            assertEquals(e.getMessage(), e.getClass());
+            assertEquals(e.getMessage(), e.getMessage());
         }
     }
 
