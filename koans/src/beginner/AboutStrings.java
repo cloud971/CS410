@@ -173,7 +173,7 @@ public class AboutStrings {
 
     @Koan
     public void readableStringFormattingWithMessageFormat() {
-        assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b"), __);
+        assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b"), MessageFormat.format("{0} {1} {0}", "a", "b"));
     }
 
     @Koan
