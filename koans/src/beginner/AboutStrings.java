@@ -28,7 +28,7 @@ public class AboutStrings {
     public void newStringIsRedundant() {
         String stringInstance = "zero";
         String stringReference = new String(stringInstance);
-        assertEquals(stringInstance.equals(stringReference), __);
+        assertEquals(stringInstance.equals(stringReference), new String().equals(stringInstance));
     }
 
     @Koan
