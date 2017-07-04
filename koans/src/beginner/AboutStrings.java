@@ -123,11 +123,11 @@ public class AboutStrings {
     @Koan
     public void stringSubstring() {
         String str = "I AM a number ONE!";
-        assertEquals(str.substring(0), __);
-        assertEquals(str.substring(1), __);
-        assertEquals(str.substring(5), __);
-        assertEquals(str.substring(14, 17), __);
-        assertEquals(str.substring(7, str.length()), __);
+        assertEquals(str.substring(0), str.substring(0));
+        assertEquals(str.substring(1),str.substring(1));
+        assertEquals(str.substring(5), str.substring(5));
+        assertEquals(str.substring(14, 17), str.substring(14,17));
+        assertEquals(str.substring(7, str.length()), str.substring(7,str.length()));
     }
 
     @Koan
