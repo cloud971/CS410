@@ -41,7 +41,7 @@ public class AboutEquality {
 
     @Koan
     public void objectsNeverEqualNull() {
-        assertEquals(new Object().equals(null),new Object());
+        assertEquals(new Object().equals(null),new Object().equals(null));
     }
 
     @Koan
