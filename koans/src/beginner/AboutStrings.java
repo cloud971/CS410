@@ -113,7 +113,7 @@ public class AboutStrings {
 
     @Koan
     public void stringEndsWith() {
-        assertEquals("".endsWith("one"), "wrong".endsWith(""));
+        assertEquals("".endsWith("one"), "wrong".endsWith("hey"));
         assertEquals("one".endsWith("one"), "bob".endsWith("bob"));
         assertEquals("the number is one".endsWith("one"), "i am eating".endsWith("eating"));
         assertEquals("the number is two".endsWith("one"), "wrong answer".endsWith("wrong"));
