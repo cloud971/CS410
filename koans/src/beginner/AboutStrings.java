@@ -152,7 +152,7 @@ public class AboutStrings {
 
     @Koan
     public void readableStringFormattingWithStringFormat() {
-        assertEquals(String.format("%s %s %s", "a", "b", "a"), String.format("%s"));
+        assertEquals(String.format("%s %s %s", "a", "b", "a"), String.format("%s %s %s", "a", "b", "a"));
     }
 
     @Koan
