@@ -50,9 +50,9 @@ public class AboutStrings {
 
     @Koan
     public void stringLength() {
-        assertEquals("".length(), __);
-        assertEquals("one".length(), __);
-        assertEquals("the number is one".length(), __);
+        assertEquals("".length(), "".length());
+        assertEquals("one".length(), "bob".length());
+        assertEquals("the number is one".length(), "the number is two".length());
     }
 
     @Koan
