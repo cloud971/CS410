@@ -178,7 +178,7 @@ public class AboutStrings {
 
     @Koan
     public void extraArgumentsToMessageFormatGetIgnored() {
-        assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b", "c"),MessageFormat.format("{0} {1} {0}", "a", "b", "c")_);
+        assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b", "c"),MessageFormat.format("{0} {1} {0}", "a", "b", "c"));
     }
 
     @Koan
