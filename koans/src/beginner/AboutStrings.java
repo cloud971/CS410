@@ -35,7 +35,7 @@ public class AboutStrings {
     public void newStringIsNotIdentical() {
         String stringInstance = "zero";
         String stringReference = new String(stringInstance);
-        assertEquals(stringInstance == stringReference, __);
+        assertEquals(stringInstance == stringReference,stringReference == stringInstance);
     }
 
     @Koan
