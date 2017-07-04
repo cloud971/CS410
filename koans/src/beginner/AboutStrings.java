@@ -146,7 +146,7 @@ public class AboutStrings {
 
     @Koan
     public void stringBuilderCanActAsAMutableString() {
-        assertEquals(new StringBuilder("one").append(" ").append("two").toString(), __);
+        assertEquals(new StringBuilder("one").append(" ").append("two").toString(),new StringBuilder("hi").append(" there"));
     }
 
     @Koan
