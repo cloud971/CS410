@@ -105,10 +105,10 @@ public class AboutStrings {
 
     @Koan
     public void stringStartsWith() {
-        assertEquals("".startsWith("one"), __);
-        assertEquals("one".startsWith("one"), __);
-        assertEquals("one is the number".startsWith("one"), __);
-        assertEquals("ONE is the number".startsWith("one"), __);
+        assertEquals("".startsWith("one"), "hi".startsWith("no"));
+        assertEquals("one".startsWith("one"), "bob".startsWith("bob"));
+        assertEquals("one is the number".startsWith("one"), "one more".startsWith("one"));
+        assertEquals("ONE is the number".startsWith("one"), "hey there".startsWith("wrong"));
     }
 
     @Koan
