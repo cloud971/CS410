@@ -61,7 +61,7 @@ public class AboutStrings {
         assertEquals("one".trim(), "one".trim());
         assertEquals(" one more time".trim()," one more time".trim());
         assertEquals(" one more time         ".trim(), " one more time         ".trim());
-        assertEquals(" and again\t".trim()," and again\t".trim(),);
+        assertEquals(" and again\t".trim()," and again\t".trim());
         assertEquals("\t\t\twhat about now?\t".trim(), "\t\t\twhat about now?\t".trim());
     }
 
