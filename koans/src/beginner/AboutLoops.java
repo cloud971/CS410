@@ -91,7 +91,7 @@ public class AboutLoops {
         while (result < 3) {
             result++;
         }
-        assertEquals(result, __);
+        assertEquals(result, 3);
     }
 
     @Koan
@@ -100,7 +100,7 @@ public class AboutLoops {
         do {
             result++;
         } while (false);
-        assertEquals(result, __);
+        assertEquals(result, 1);
     }
 
     @Koan
