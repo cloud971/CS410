@@ -109,7 +109,7 @@ public class AboutConditionals {
             case 2:
                 result += "Two";
         }
-        assertEquals(result, "Basic NothingTwo");
+        assertEquals(result, "Basic NothingTw");
     }
 
     @Koan
