@@ -126,7 +126,7 @@ public class AboutConditionals {
             default:
                 result += "Nothing";
         }
-        assertEquals(result, );
+        assertEquals(result,__ );
 
     }
 
