@@ -104,9 +104,11 @@ public class AboutConditionals {
         switch (i) {
             case 1:
                 result += "One";
+            case 2:
+                result+= "bob"
             default:
                 result += "Nothing";
-            case 2:
+            case 3:
                 result += "Two";
         }
         assertEquals(result, "Basic NothingTw");
