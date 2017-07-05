@@ -16,7 +16,7 @@ public class AboutConditionals {
             x++;
         }
 
-        assertEquals(x, 1);
+        assertEquals(x, 2);
     }
 
     @Koan
@@ -28,7 +28,7 @@ public class AboutConditionals {
         } else {
             x--;
         }
-        assertEquals(x, 1);
+        assertEquals(x, 0);
     }
 
     @Koan
