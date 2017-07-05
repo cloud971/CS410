@@ -144,7 +144,7 @@ public class AboutConditionals {
             default:
                 result += "Nothing";
         }
-        assertEquals(result, "Basic a");
+        assertEquals(result, "Basic One");
     }
 
     @Koan
@@ -154,6 +154,6 @@ public class AboutConditionals {
         // Why did we use a variable here?
         // What happens if you replace 'a' with '6' below?
         if ((a < 9) || (++i < 8)) i = i + 1;
-        assertEquals(i, __);
+        assertEquals(i, 2);
     }
 }
