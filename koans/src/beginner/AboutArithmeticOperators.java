@@ -9,14 +9,14 @@ public class AboutArithmeticOperators {
 
     @Koan
     public void simpleOperations() {
-        assertEquals(1, __);
-        assertEquals(1 + 1, __);
-        assertEquals(2 + 3 * 4, __);
-        assertEquals((2 + 3) * 4, __);
-        assertEquals(2 * 3 + 4, __);
-        assertEquals(2 - 3 + 4, __);
-        assertEquals(2 + 4 / 2, __);
-        assertEquals((2 + 4) / 2, __);
+        assertEquals(1, 1;
+        assertEquals(1 + 1, 2);
+        assertEquals(2 + 3 * 4, 24);
+        assertEquals((2 + 3) * 4, 20);
+        assertEquals(2 * 3 + 4, 10);
+        assertEquals(2 - 3 + 4, -5);
+        assertEquals(2 + 4 / 2, 4);
+        assertEquals((2 + 4) / 2, 3);
     }
 
     @Koan
