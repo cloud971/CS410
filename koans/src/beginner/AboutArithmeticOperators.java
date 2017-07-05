@@ -31,9 +31,9 @@ public class AboutArithmeticOperators {
     public void minusMinusVariableMinusMinus() {
         int i = 1;
         assertEquals(--i, 0);
-        assertEquals(i, 1);
-        assertEquals(i--, 0);
-        assertEquals(i, i);
+        assertEquals(i,0);
+        assertEquals(i--,-1);
+        assertEquals(i, -1);
     }
 
     @Koan
