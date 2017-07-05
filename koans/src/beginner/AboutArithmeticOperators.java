@@ -32,7 +32,7 @@ public class AboutArithmeticOperators {
         int i = 1;
         assertEquals(--i, 0);
         assertEquals(i,0);
-        assertEquals(i--,-1);
+        assertEquals(i--,0);
         assertEquals(i, -1);
     }
 
