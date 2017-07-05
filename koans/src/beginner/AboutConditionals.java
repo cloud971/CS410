@@ -79,7 +79,7 @@ public class AboutConditionals {
             default:
                 result += "Nothing";
         }
-        assertEquals(result, );
+        assertEquals(result, "Basic OneTwoNothing");
     }
 
     @Koan
