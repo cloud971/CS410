@@ -60,7 +60,7 @@ public class AboutLoops {
         for (int i = 0, j = 10; i < 5 && j > 5; i++, j--) {
             s += i + " " + j + " ";
         }
-        assertEquals(s, "0 10 1 9 2 8 3 7 3 6 4 5 ");
+        assertEquals(s, "0 10 1 9 2 8 3 7 4 6 ");
     }
 
     @Koan
@@ -72,7 +72,7 @@ public class AboutLoops {
             }
             s += " - ";
         }
-        assertEquals(s, __);
+        assertEquals(s,"jj");
     }
 
     @Koan
