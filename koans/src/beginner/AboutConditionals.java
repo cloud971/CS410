@@ -105,7 +105,7 @@ public class AboutConditionals {
             case 1:
                 result += "One";
             case 2:
-                result+= "bob"
+                result+= "bob";
             default:
                 result += "Nothing";
             case 3:
