@@ -15,6 +15,7 @@ public class AboutConditionals {
         if (true) {
             x++;
         }
+
         assertEquals(x, 1);
     }
 
