@@ -24,7 +24,7 @@ public class AboutLoops {
         for (int i = -5; i < 1; i++) {
             s += i + " ";
         }
-        assertEquals(s, "-5 -4 -3 -2 -1 ");
+        assertEquals(s, "-5 -4 -3 -2 -1 0 ");
     }
 
     @Koan
@@ -33,7 +33,7 @@ public class AboutLoops {
         for (int i = 5; i > 0; i--) {
             s += i + " ";
         }
-        assertEquals(s, __);
+        assertEquals(s, "5 4 3 2 1 0 ");
     }
 
     @Koan
