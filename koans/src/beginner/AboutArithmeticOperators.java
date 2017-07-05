@@ -11,7 +11,7 @@ public class AboutArithmeticOperators {
     public void simpleOperations() {
         assertEquals(1, 1);
         assertEquals(1 + 1, 2);
-        assertEquals(2 + 3 * 4, 24);
+        assertEquals(2 + 3 * 4, 14);
         assertEquals((2 + 3) * 4, 20);
         assertEquals(2 * 3 + 4, 10);
         assertEquals(2 - 3 + 4, -5);
