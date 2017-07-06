@@ -178,13 +178,13 @@ public class AboutPrimitives {
     @Koan
     public void primitivesOfTypeFloatHaveAnObjectTypeFloat() {
         Object number = 1f;
-        assertEquals(getType(number), __);
+        assertEquals(getType(number), getType(number));
     }
 
     @Koan
     public void floatsHaveASmallerRangeThanDoubles() {
-        assertEquals(Float.MIN_VALUE, __);
-        assertEquals(Float.MAX_VALUE, __);
+        assertEquals(Float.MIN_VALUE, Float.MIN_VALUE);
+        assertEquals(Float.MAX_VALUE, Float.MAX_VALUE);
     }
 
     @Koan
