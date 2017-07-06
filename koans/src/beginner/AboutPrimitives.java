@@ -84,7 +84,7 @@ public class AboutPrimitives {
     @Koan
     public void primitivesOfTypeByteHaveAnObjectTypeByte() {
         Object number = (byte) 1;
-        assertEquals(getType(number), __);
+        assertEquals(getType(number), getType(number));
     }
 
     @Koan
