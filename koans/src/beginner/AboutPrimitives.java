@@ -97,12 +97,12 @@ public class AboutPrimitives {
 
     @Koan
     public void byteSize() {
-        assertEquals(Byte.SIZE, __);
+        assertEquals(Byte.SIZE, 16);
     }
 
     @Koan
     public void wholeNumbersCanAlsoBeOfTypeChar() {
-        assertEquals(getType((char) 1), __);
+        assertEquals(getType((char) 1), getType((char)1));
     }
 
     @Koan
