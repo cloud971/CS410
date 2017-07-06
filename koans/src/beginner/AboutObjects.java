@@ -13,7 +13,7 @@ public class AboutObjects {
 
     @Koan
     public void newObjectInstancesCanBeCreatedDirectly() {
-        assertEquals(new Object() instanceof Object, new Object());
+        assertEquals(new Object() instanceof Object, new Object() instanceof Object);
     }
 
     @Koan
