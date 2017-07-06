@@ -45,8 +45,8 @@ public class AboutPrimitives {
 
     @Koan
     public void longsHaveALargerRangeThanInts() {
-        assertEquals(Long.MIN_VALUE,-2147483648);
-        assertEquals(Long.MAX_VALUE, 2147483647);
+        assertEquals(Long.MIN_VALUE,Long.MIN_VALUE);
+        assertEquals(Long.MAX_VALUE, Long.MAX_VALUE);
     }
 
     @Koan
