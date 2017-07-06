@@ -73,7 +73,7 @@ public class AboutPrimitives {
 
     @Koan
     public void shortSize() {
-        assertEquals(Short.SIZE, __);
+        assertEquals(Short.SIZE, 16);
     }
 
     @Koan
