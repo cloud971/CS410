@@ -63,7 +63,7 @@ public class AboutPrimitives {
     public void primitivesOfTypeShortHaveAnObjectTypeShort() {
         Object number = (short) 1;
         short num = 1;
-        assertEquals(getType(number), num);
+        assertEquals(getType(number), getType(num));
     }
 
     @Koan
