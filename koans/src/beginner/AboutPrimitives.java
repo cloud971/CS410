@@ -51,7 +51,7 @@ public class AboutPrimitives {
 
     @Koan
     public void longSize() {
-        assertEquals(Long.SIZE, __);
+        assertEquals(Long.SIZE, 64);
     }
 
     @Koan
