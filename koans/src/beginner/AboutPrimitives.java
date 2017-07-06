@@ -126,17 +126,17 @@ public class AboutPrimitives {
 
     @Koan
     public void charSize() {
-        assertEquals(Character.SIZE, __);
+        assertEquals(Character.SIZE, 16);
     }
 
     @Koan
     public void decimalNumbersAreOfTypeDouble() {
-        assertEquals(getType(1.0), __);
+        assertEquals(getType(1.0), getType(1.3));
     }
 
     @Koan
     public void primitivesOfTypeDoubleCanBeDeclaredWithoutTheDecimalPoint() {
-        assertEquals(getType(1d), __);
+        assertEquals(getType(1d), getType(2d));
     }
 
     @Koan
