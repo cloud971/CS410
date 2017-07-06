@@ -160,12 +160,12 @@ public class AboutPrimitives {
 
     @Koan
     public void doubleSize() {
-        assertEquals(Double.SIZE, __);
+        assertEquals(Double.SIZE, 8);
     }
 
     @Koan
     public void decimalNumbersCanAlsoBeOfTypeFloat() {
-        assertEquals(getType(1f), __);
+        assertEquals(getType(1f), getType(2f));
     }
 
     @Koan
