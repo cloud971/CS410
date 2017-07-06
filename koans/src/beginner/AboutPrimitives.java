@@ -56,7 +56,7 @@ public class AboutPrimitives {
 
     @Koan
     public void wholeNumbersCanAlsoBeOfTypeShort() {
-        assertEquals(getType((short) 1), __); // The '(short)' is called an explicit cast - to type 'short'
+        assertEquals(getType((short) 1), getType((short)2)); // The '(short)' is called an explicit cast - to type 'short'
     }
 
     @Koan
