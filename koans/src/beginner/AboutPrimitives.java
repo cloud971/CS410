@@ -34,7 +34,7 @@ public class AboutPrimitives {
 
     @Koan
     public void wholeNumbersCanAlsoBeOfTypeLong() {
-        assertEquals(getType(1L), getType(400000));
+        assertEquals(getType(1L), getType(40000000));
     }
 
     @Koan
