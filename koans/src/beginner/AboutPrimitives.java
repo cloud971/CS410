@@ -170,9 +170,9 @@ public class AboutPrimitives {
 
     @Koan
     public void primitivesOfTypeFloatCanBeDeclaredWithExponents() {
-        assertEquals(getType(1e3f), __);
-        assertEquals(1.0e3f, __);
-        assertEquals(1E3f, __);
+        assertEquals(getType(1e3f), getType(2f));
+        assertEquals(1.0e3f, 1000.0);
+        assertEquals(1E3f, 1000.0);
     }
 
     @Koan
