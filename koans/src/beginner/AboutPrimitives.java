@@ -141,7 +141,7 @@ public class AboutPrimitives {
 
     @Koan
     public void primitivesOfTypeDoubleCanBeDeclaredWithExponents() {
-        assertEquals(getType(1e3), 1000);
+        assertEquals(getType(1e3), getType(1.0));
         assertEquals(1.0e3, 1000);
         assertEquals(1E3, 1000);
     }
