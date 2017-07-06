@@ -23,8 +23,8 @@ public class AboutPrimitives {
 
     @Koan
     public void integersHaveAFairlyLargeRange() {
-        assertEquals(Integer.MIN_VALUE, __);
-        assertEquals(Integer.MAX_VALUE, __);
+        assertEquals(Integer.MIN_VALUE, -2147483648);
+        assertEquals(Integer.MAX_VALUE, 2147483647);
     }
 
     @Koan
