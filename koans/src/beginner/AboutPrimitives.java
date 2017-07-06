@@ -15,7 +15,7 @@ public class AboutPrimitives {
     @Koan
     public void primitivesOfTypeIntHaveAnObjectTypeInteger() {
         Object number = 1;
-        assertEquals(getType(number), __);
+        assertEquals(getType(number), int);
 
         // Primitives can be automatically changed into their object type via a process called auto-boxing
         // We will explore this in more detail in intermediate.AboutAutoboxing
