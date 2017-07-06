@@ -97,7 +97,7 @@ public class AboutPrimitives {
 
     @Koan
     public void byteSize() {
-        assertEquals(Byte.SIZE, 16);
+        assertEquals(Byte.SIZE, 8);
     }
 
     @Koan
