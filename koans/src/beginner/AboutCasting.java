@@ -91,7 +91,7 @@ public class AboutCasting {
         Parent parent = (Child) child;
         // Think about the result. Did you expect that? Why?
         // How is that different from above?
-        assertEquals(parent.complain(), __);
+        assertEquals(parent.complain(), "Are we there yet!!");
     }
 
     @Koan
