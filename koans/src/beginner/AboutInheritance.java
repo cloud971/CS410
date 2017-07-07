@@ -58,9 +58,9 @@ public class AboutInheritance {
         Animal bob = new Cow();
         Animal max = new Dog();
         Animal barney = new Puppy();
-        assertEquals(bob.makeSomeNoise(), __);
-        assertEquals(max.makeSomeNoise(), __);
-        assertEquals(barney.makeSomeNoise(), __);
+        assertEquals(bob.makeSomeNoise(), "Moo!");
+        assertEquals(max.makeSomeNoise(), "Woof!");
+        assertEquals(barney.makeSomeNoise(), "Squeak!");
         // but can max or barney (here as an Animal) fetch?
         // try to write it down here
     }
