@@ -50,7 +50,7 @@ public class AboutObjects {
         String string = "string";
         Integer i = new Integer(128);
         Short s = new Short((short) 15);
-        assertEquals(string + " " + i + " " + s, __);
+        assertEquals(string + " " + i + " " + s, "string 15 128");
     }
 
     private Class<?>[] getAncestors(Object object) {
