@@ -42,7 +42,7 @@ public class AboutObjects {
                 return string;
             }
         };
-        assertEquals(string + object, __);
+        assertEquals(string + object, "haha");
     }
 
     @Koan
