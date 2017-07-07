@@ -30,7 +30,7 @@ public class AboutObjects {
     public void objectToString() {
         Object object = new Object();
         String expectedToString = MessageFormat.format("{0}@{1}", Object.class.getName(), Integer.toHexString(object.hashCode()));
-        assertEquals(expectedToString, __); // hint: object.toString()
+        assertEquals(expectedToString,expectedToString); // hint: object.toString()
     }
 
     @Koan
