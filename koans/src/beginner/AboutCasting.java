@@ -16,7 +16,7 @@ public class AboutCasting {
         Object c = a + b;
         assertEquals(c,c);
         assertEquals(c instanceof Integer, false);
-        assertEquals(c instanceof Long, false);
+        assertEquals(c instanceof Long, true);
     }
 
     @Koan
