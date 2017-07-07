@@ -72,7 +72,7 @@ public class AboutCasting {
         Child child = new Child();
         Parent parentReference = child;
         // If the result is unexpected, consider the difference between an instance and its reference
-        assertEquals(parentReference.complain(), __);
+        assertEquals(parentReference.complain(), "Are we there yet!!");
     }
 
     @Koan
