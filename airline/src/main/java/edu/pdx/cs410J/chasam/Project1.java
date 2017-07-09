@@ -12,11 +12,12 @@ public class Project1 {
     System.err.println("Missing command line arguments");
     Airline Airline_info;
 
-    /*loops string and displays*/
+    /*loops string and displays
     for (String arg : args) {
       System.out.println(arg);
     }
 
+*/
     System.out.println(args.length);
 
     // too many args
