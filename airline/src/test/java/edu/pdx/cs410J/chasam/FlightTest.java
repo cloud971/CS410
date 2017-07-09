@@ -20,6 +20,7 @@ public class FlightTest {
   @Test
   public void initiallyAllFlightsHaveTheSameNumber() {
     Flight flight = new Flight();
+    flight.setNum(42);
     assertThat(flight.getNumber(), equalTo(42));
   }
 
