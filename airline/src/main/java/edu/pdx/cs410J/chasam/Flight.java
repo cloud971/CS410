@@ -69,4 +69,9 @@ public class Flight extends AbstractFlight {
 
       return "dadsa";
   }
+
+  public void setNum(int set){
+
+      flightNumber = Integer.toString(set);
+  }
 }
