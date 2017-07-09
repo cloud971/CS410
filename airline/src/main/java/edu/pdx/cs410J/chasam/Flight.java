@@ -41,6 +41,9 @@ public class Flight extends AbstractFlight {
 
     int flightNum = Integer.parseInt(flightNumber);
 
+    if(flightNumber.equals(null))
+        return 0;
+
     return flightNum;
   }
 
