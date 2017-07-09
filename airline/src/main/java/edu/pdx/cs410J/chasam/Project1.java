@@ -17,9 +17,12 @@ public class Project1 {
       System.out.println(arg);
     }
 
+<<<<<<< HEAD
 */
     System.out.println(args.length);
 
+=======
+>>>>>>> 3a70b6d6ea654ca763a51172e32229bc09293afe
     // too many args
     if (args.length > 8) {
 
