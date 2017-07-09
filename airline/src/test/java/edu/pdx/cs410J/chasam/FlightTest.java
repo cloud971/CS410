@@ -16,12 +16,13 @@ public class FlightTest {
     flight.getArrivalString();
   }
 
+  /*
   @Test
   public void initiallyAllFlightsHaveTheSameNumber() {
     Flight flight = new Flight();
     assertThat(flight.getNumber(), equalTo(42));
   }
-
+*/
   @Test
   public void forProject1ItIsOkayIfGetDepartureTimeReturnsNull() {
     Flight flight = new Flight();
