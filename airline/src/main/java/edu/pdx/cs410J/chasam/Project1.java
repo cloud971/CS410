@@ -17,6 +17,8 @@ public class Project1 {
       System.out.println(arg);
     }
 
+    System.out.println(args.length);
+
     // too many args
     if (args.length > 8) {
 
