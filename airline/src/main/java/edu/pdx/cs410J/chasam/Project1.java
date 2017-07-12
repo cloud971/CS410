@@ -13,6 +13,12 @@ public class Project1 {
     Class c = AbstractAirline.class;  // Refer to one of Dave's classes so that we can be sure it is on the classpath
 
     Airline Airline_info;
+    String readMe = new String("Sam Cha\nProject 1\n7/12/17\n\nThis is the first project for CS410p Advanced Java.\n" +
+            "The purpose of this program is to create an airline and add a flight to the airline.\n" +
+            "The program takes arguments from the command line and error checks for bad inputs.\nAfter this step a flight is created\n" +
+            "and stored inside an arraylist data structure." + "\nThere are four features that this program has.\n" +
+            "The first feature is adding flights/airlines, second is displaying the airline,\nThe third feature displays the flight informationan\n" +
+            "and the last feature displays a read me to the user.\n");
 
     /*loops string and displays
     for (String arg : args) {
@@ -47,7 +53,7 @@ public class Project1 {
     // print readme and leave
     else if(args[0].equals("-README")){
 
-      System.out.println("Welcome to airline");
+      System.out.println(readMe);
       return;
     }
 
