@@ -73,6 +73,7 @@ public class Project1 {
               System.out.println(flightInfo);
           }
 
+          // prints readme
           System.out.println(readMe);
       }
 
