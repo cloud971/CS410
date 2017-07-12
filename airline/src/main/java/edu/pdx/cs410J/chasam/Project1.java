@@ -31,11 +31,16 @@ public class Project1 {
     }
 
     // no args
-    else if(args.length == 0)
+    else if(args.length == 0) {
+
         System.out.println("No arguments");
+        return;
+    }
 
     // not enough args
     else if(args.length < 8){
+
+        System.out.println("Not enough arguments");
         return;
     }
 
@@ -150,7 +155,7 @@ public class Project1 {
       return false;
   }
 
-  // checks for inccorect time format
+  // checks for incorrect time format
   public static boolean Check_date(String theDate, String theFormat){
 
       Date aDate = null;
@@ -212,6 +217,7 @@ public class Project1 {
 
               return true;
 
+          // accounts for single time
           else if (("0"+timeString).equals(sFormat.format(timeDate)))
 
               return true;
