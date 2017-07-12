@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.chasam;
 
 import edu.pdx.cs410J.AbstractAirline;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
