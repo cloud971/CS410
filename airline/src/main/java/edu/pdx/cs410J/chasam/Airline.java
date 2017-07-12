@@ -1,6 +1,5 @@
 package edu.pdx.cs410J.chasam;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import edu.pdx.cs410J.AbstractAirline;
 
 import java.util.ArrayList;
@@ -12,20 +11,23 @@ import java.util.Collection;
 public class Airline extends AbstractAirline<Flight>{
 
     private Collection<Flight> Flight_List = new ArrayList<>();
+    String name;
 
     public Airline(){
 
     }
 
-    public Airline(String[] Info){
+    public Airline(String[] info, int index){
 
-        Flight Users_Flight = new Flight(Info);
+        this.name = new String(info[index]);
+        Flight Users_Flight = new Flight(info, index+1);
+        Flight_List.add(Users_Flight);
     }
 
     @Override
     public String getName(){
 
-        return "hi";
+        return name;
     }
 
     @Override

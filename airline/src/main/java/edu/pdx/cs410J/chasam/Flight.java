@@ -4,9 +4,8 @@ import edu.pdx.cs410J.AbstractFlight;
 
 public class Flight extends AbstractFlight {
 
-    private String name;
     private String flightNumber;
-    private String Src;
+    private String src;
     private String arrival;
     private String dest;
     private String dep;
@@ -15,24 +14,14 @@ public class Flight extends AbstractFlight {
 
     }
 
-  public Flight(String [] data){
+  public Flight(String [] data, int index){
 
-    // no print or readme
-    if(data.length == 8){
 
-      this.name = new String(data[0]); // name
-      this.flightNumber = new String(data[1]); // flight number
-      this.Src = new String(data[2]); // 3 symbol
-      this.arrival = new String(data[3] + data[4]); // data and time arrival
-      this.dest = new String(data[5]); // destination
-      this.dep = new String(data[6] + data[7]); // data and time of dep
-
-    }
-
-    // there was a print or read
-    else if(data[0] == "-Print"){
-
-    }
+      this.flightNumber = new String(data[index]); // flight number
+      this.src = new String(data[index+1]); // 3 symbol
+      this.arrival = new String(data[index+2] + data[index+3]); // data and time arrival
+      this.dest = new String(data[index+4]); // destination
+      this.dep = new String(data[index+5] + data[index+6]); // data and time of dep
 
   }
 
@@ -50,24 +39,24 @@ public class Flight extends AbstractFlight {
   @Override
   public String getSource() {
 
-      return "s";
+      return src;
   }
 
   @Override
   public String getDepartureString() {
 
-      return "s";
+      return dep;
   }
 
   @Override
   public String getDestination() {
-      return "l";
+      return dest;
   }
 
   @Override
   public String getArrivalString() {
 
-      return "dadsa";
+      return arrival;
   }
 
   public void setNum(int set){
