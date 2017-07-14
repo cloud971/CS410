@@ -50,7 +50,7 @@ public class AboutMethodPreference {
     @Koan
     public void methodPreferenceDouble() {
         Double l = Double.valueOf(1);
-        assertEquals(new A().doStuff(l), "Double");
+        assertEquals(new A().doStuff(l), "Object");
     }
 
     @Koan
