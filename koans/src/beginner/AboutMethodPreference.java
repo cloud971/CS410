@@ -27,7 +27,7 @@ public class AboutMethodPreference {
 
     @Koan
     public void methodPreferenceInt() {
-        assertEquals(new A().doStuff(1), __);
+        assertEquals(new A().doStuff(1), "int");
     }
 
     @Koan
