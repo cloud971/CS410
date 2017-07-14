@@ -92,7 +92,7 @@ public class AboutExceptions {
         StringBuilder whatHappened = new StringBuilder();
         // Which value will be returned here?
         assertEquals(returnStatementsEverywhere(whatHappened), "from finally");
-        assertEquals(whatHappened.toString(), __);
+        assertEquals(whatHappened.toString(), "try, catch, finally");
     }
 
     private void doUncheckedStuff() {
