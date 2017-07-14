@@ -102,7 +102,11 @@ public class AboutExceptions {
     @Koan
     public void catchUncheckedExceptions() {
         // What do you need to do to catch the unchecked exception?
+        try{
         doUncheckedStuff();
+        }catch (RuntimeException e){
+
+        }
     }
 
     @SuppressWarnings("serial")
