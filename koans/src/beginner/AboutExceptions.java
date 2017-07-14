@@ -36,7 +36,7 @@ public class AboutExceptions {
         } finally {
             s += " and finally ran as well";
         }
-        assertEquals(s, __);
+        assertEquals(s, "exception thrown and finally ran as well");
     }
 
     @Koan
