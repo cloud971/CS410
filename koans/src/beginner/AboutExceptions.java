@@ -131,7 +131,7 @@ public class AboutExceptions {
         } catch (ParentException e) {
             s = "ParentException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "ChildException");
     }
 
     @Koan
