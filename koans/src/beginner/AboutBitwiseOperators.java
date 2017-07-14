@@ -43,7 +43,7 @@ public class AboutBitwiseOperators {
     public void aboutBitShiftingRightShift() {
         int rightShift = 8;
         rightShift = rightShift >> 1;
-        assertEquals(rightShift, __);
+        assertEquals(rightShift, 4);
     }
 
     @Koan
