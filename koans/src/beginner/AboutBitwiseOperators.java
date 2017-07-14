@@ -18,7 +18,7 @@ public class AboutBitwiseOperators {
     public void shortCircuitAnd() {
         int i = 1;
         if (true && (i < -28)) i = i + 1;
-        assertEquals(i, 2);
+        assertEquals(i, 1);
     }
 
     @Koan
