@@ -32,7 +32,7 @@ public class AboutMethodPreference {
 
     @Koan
     public void methodPreferenceInteger() {
-        assertEquals(new A().doStuff(Integer.valueOf(1)), __);
+        assertEquals(new A().doStuff(Integer.valueOf(1)), "Integer");
     }
 
     @Koan
