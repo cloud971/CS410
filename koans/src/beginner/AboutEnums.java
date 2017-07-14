@@ -42,7 +42,7 @@ public class AboutEnums {
         // value is private but we still can access it. Why?
         // Try moving the enum outside the AboutEnum class... What do you expect?
         // What happens?
-        assertEquals(SkatSuits.Clubs.value > SkatSuits.Spades.value, __);
+        assertEquals(SkatSuits.Clubs.value > SkatSuits.Spades.value, true);
     }
 
     enum OpticalMedia {
