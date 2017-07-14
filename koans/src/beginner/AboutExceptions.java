@@ -66,7 +66,7 @@ public class AboutExceptions {
     public void finallyIsAlwaysRan() {
         StringBuilder whatHappened = new StringBuilder();
         tryCatchFinallyWithVoidReturn(whatHappened);
-        assertEquals(whatHappened.toString(), __);
+        assertEquals(whatHappened.toString(), "did something dangerous; the catch block executed , but so did the finally!");
     }
 
     @SuppressWarnings("finally")
