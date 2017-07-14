@@ -33,9 +33,9 @@ public class AboutBitwiseOperators {
     public void dontMistakeEqualsForEqualsEquals() {
         int i = 1;
         boolean a = false;
-        if (a = true) i++;
-        assertEquals(a, __);
-        assertEquals(i, __);
+        if (a == true) i++;
+        assertEquals(a, false);
+        assertEquals(i, 2);
         // How could you write the condition 'with a twist' to avoid this trap?
     }
 
