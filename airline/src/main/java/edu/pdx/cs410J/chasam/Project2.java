@@ -20,17 +20,17 @@ public class Project2 {
             "The first feature is adding flights/airlines, second is displaying the airline,\nThe third feature displays the flight informationan\n" +
             "and the last feature displays a read me to the user.\n");
 
-    /*loops string and displays
-    for (String arg : args) {
-      System.out.println(arg);
-    }
+    String [] fileSplit; // filename
+    TextParser checkName; // checks for same airline
+    TextDumper addMe; // adds flight to text file
+    int error = 0;
 
-*/
+
     // tracker
     int index = 0;
 
     // too many args
-    if (args.length > 10) {
+    if (args.length > 11) {
 
         System.out.println("You have entered too much information");
         return;
@@ -57,6 +57,12 @@ public class Project2 {
         return;
     }
 
+    // the user wants to add to file
+    else if(args.length == 1 && args[0].contains("-textFile ")){
+
+        System.out.println("You have not entered anything to add to the file");
+    }
+
     //not enough args
     else if(args.length < 8){
 
@@ -77,8 +83,8 @@ public class Project2 {
 
         String flightInfo;
 
-      // check if read me is next
-      if(args[1].equals("-README")){
+      // check if read me is next and not writing to file
+      if(args[1].equals("-README") && !args[2].contains("-textFile ")){
 
           index = 2;
 
@@ -94,21 +100,45 @@ public class Project2 {
           System.out.println(readMe);
       }
 
-      // user only wants to print flight
-      else{
+      // user only wants to print and add to file
+      else if(args[1].contains("-textFile ") && !args[2].equals("-README")){
 
-          index = 1;
+          index = 2;
 
           if (!Bad_Input(args,index)){
 
               Airline_info = new Airline(args,index);
               flightInfo = Airline_info.toString();
               System.out.println(flightInfo);
+
+              // getting filename
+              fileSplit = args[1].split(" ");
+
+              checkName = new TextParser();
+
+              // checking if the file exists
+              if(checkName.checkFile(fileSplit[1]))
+                  System.out.println("found file");
           }
       }
+
+      // add to textfile and print readme
+      else if (args[1].contains("textFile ") && args[2].equals("-README")){
+
+          index = 3;
+
+          if (!Bad_Input(args,index)){
+
+              Airline_info = new Airline(args,index);
+              flightInfo = Airline_info.toString();
+              System.out.println(flightInfo);
+
+          }
+
+        }
     }
 
-    // no read me or print
+    // no readme, print or file read
     else if(args.length == 8){
 
         if (!Bad_Input(args, index)) {
