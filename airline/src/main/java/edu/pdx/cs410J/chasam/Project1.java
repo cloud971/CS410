@@ -44,8 +44,18 @@ public class Project1 {
     }
 
     //prints readme
-    else if (args.length == 1 && args[0].equals("-README"))
+    else if (args.length == 1 && args[0].equals("-README")){
+
         System.out.println(readMe);
+        return;
+    }
+
+    // user wants to print flight but no information
+    else if(args.length == 1 && args[0].equals("-print")) {
+
+        System.out.println("There is no flight information");
+        return;
+    }
 
     //not enough args
     else if(args.length < 8){
@@ -66,12 +76,15 @@ public class Project1 {
     else if(args[0].equals("-print")){
 
         String flightInfo;
+
       // check if read me is next
       if(args[1].equals("-README")){
 
           index = 2;
+
           // check to see if input is correct format
           if (!Bad_Input(args,index)){
+
               Airline_info = new Airline(args,index);
               flightInfo = Airline_info.toString();
               System.out.println(flightInfo);
@@ -81,6 +94,7 @@ public class Project1 {
           System.out.println(readMe);
       }
 
+      // user only wants to print flight
       else{
 
           index = 1;
@@ -95,14 +109,17 @@ public class Project1 {
     }
 
     // no read me or print
-    else {
+    else if(args.length == 8){
 
         if (!Bad_Input(args, index)) {
 
-            System.out.println("adding");
+            System.out.println("Your flight has been added");
             Airline_info = new Airline(args, index);
         }
     }
+
+    else
+        System.out.println("");
   }
 
   // checks for bad inputs
@@ -218,7 +235,7 @@ public class Project1 {
   // checks for correct time format
   public static boolean Check_time(String timeString){
 
-      String timeFormat ="hh:mm";
+      String timeFormat ="HH:mm";
       Date timeDate;
 
       try {
@@ -241,5 +258,4 @@ public class Project1 {
 
       return false;
   }
-
 }
