@@ -32,21 +32,25 @@ public class Project1 {
     // too many args
     if (args.length > 10) {
 
-        System.out.println("too many arguments");
+        System.out.println("You have entered too much information");
         return;
     }
 
     // no args
     else if(args.length == 0) {
 
-        System.out.println("No arguments");
+        System.out.println("You have not entered any information");
         return;
     }
 
-    // not enough args
+    //prints readme
+    else if (args.length == 1 && args[0].equals("-README"))
+        System.out.println(readMe);
+
+    //not enough args
     else if(args.length < 8){
 
-        System.out.println("Not enough arguments");
+        System.out.println("You are missing information about your flight");
         return;
     }
 
