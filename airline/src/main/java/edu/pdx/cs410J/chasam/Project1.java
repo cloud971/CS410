@@ -119,7 +119,7 @@ public class Project1 {
     }
 
     else
-        System.out.println("");
+        System.out.println("You have too much information entered");
   }
 
   // checks for bad inputs
