@@ -3,8 +3,6 @@ package edu.pdx.cs410J.chasam;
 import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**

@@ -107,57 +107,57 @@ public class Project1 {
       String regex ="[0-9]+";
       String dateFormat = "MM/dd/yyyy";
 
-
+/*
       // checks for valid airline name
       if(Check_Err[index].matches(regex) || !Check_Err[index].matches("[a-zA-Z]+")){
 
-          System.out.println("Ivalid Airline");
+          System.out.println("Invalid Airline");
           return true;
       }
+*/
+      if(!Check_Err[index+1].matches(regex)) { // Check for valid flightnumber
 
-      else if(!Check_Err[index+1].matches(regex)) { // Check for valid flightnumber
-
-          System.out.println("Invalid flightNumber");
+          System.out.println("Your flight number needs to contain only numbers ex: 123");
           return true;
       }
 
       // Src greater than length and contains numbers
       else if(Check_Err[index+2].length() != 3 || !Check_Err[index+2].matches("[a-zA-Z]+")) {
 
-          System.out.println("Invalid departure code");
+          System.out.println("Your code of departure needs to be a three letter code ex:abc");
           return true;
       }
 
 
       else if(!Check_date(Check_Err[index+3],dateFormat)){ // check for valid departure date format
 
-          System.out.println("Invalid departure date");
+          System.out.println("Your departure date needs to be in one of these formats, mm/dd/yyyy, m/dd/yyyy, mm/d/yyyy ");
             return true;
       }
 
       else if (!Check_time(Check_Err[index+4])){ // check for valid departure time format
 
-          System.out.println("Invalid depature time");
+          System.out.println("Your departure time is invalid, ex: 5:23");
           return true;
       }
 
       // check for valid arrival airport code
       else if(Check_Err[index+5].length() != 3 || !Check_Err[index+5].matches("[a-zA-Z]+")) {
 
-          System.out.println("Invalid arrival airport code");
+          System.out.println("Your code of arrival needs to be three letters ex:abc");
           return true;
       }
 
       // check for valid arrival date
       else if(!Check_date(Check_Err[index+6],dateFormat)){ // check for valid departure date format
 
-          System.out.println("Invalid arrival date");
+          System.out.println("Your arrival date needs to be in one of these formats, mm/dd/yyyy, m/dd/yyyy, mm/d/yyyy ");
             return true;
       }
 
       else if (!Check_time(Check_Err[index+7])){ // check for valid departure time format
 
-          System.out.println("Invalid arrival time");
+          System.out.println("Your arrival time is invalid ex: 10:04");
           return true;
       }
 
