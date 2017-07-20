@@ -19,9 +19,23 @@ public class Flight extends AbstractFlight {
 
       this.flightNumber = new String(data[index]); // flight number
       this.src = new String(data[index+1]); // 3 symbol
-      this.arrival = new String(data[index+2] + data[index+3]); // data and time arrival
+      this.dep = new String(data[index+2] +" "+ data[index+3]); // data and time arrival
       this.dest = new String(data[index+4]); // destination
-      this.dep = new String(data[index+5] + data[index+6]); // data and time of dep
+      this.arrival = new String(data[index+5] +" "+ data[index+6]); // data and time of dep
+
+  }
+
+  public Flight(String [] data){
+
+      flightNumber = new String(data[1]);
+      src= new String(data[2]);
+      arrival = new String(data[6]+" "+data[7]);
+      dest = new String(data[5]);
+      dep = new String(data[3]+" "+data[4]);
+  }
+
+  public Flight(Flight mainFlight){
+
 
   }
 

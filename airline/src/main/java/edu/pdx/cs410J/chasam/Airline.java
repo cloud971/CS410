@@ -10,6 +10,7 @@ import java.util.Collection;
 public class Airline extends AbstractAirline<Flight>{
 
     private Collection<Flight> Flight_List = new ArrayList<>();
+
     String name;
 
     public Airline(){
@@ -40,5 +41,43 @@ public class Airline extends AbstractAirline<Flight>{
     public Collection<Flight> getFlights(){
 
         return this.Flight_List;
+    }
+
+    // adding a new flight from file
+    public void toAdd(String [] newFlight){
+
+        name = newFlight[0];
+        Flight addFlight = new Flight(newFlight);
+        Flight_List.add(addFlight);
+    }
+
+    public void display(){
+
+        for(Flight x:Flight_List){
+            System.out.println(x.toString());
+        }
+    }
+
+    public boolean sameName(String aName) {
+
+        if (name.equals(aName))
+            return true;
+
+        return false;
+    }
+
+    public void mainAdd(String [] args, int index){
+
+        Flight mainFlight = new Flight(args,index);
+        Flight_List.add(mainFlight);
+    }
+
+    public void printnew(){
+
+
+        Flight [] convertF = new Flight[Flight_List.size()];
+        convertF = Flight_List.toArray(convertF);
+
+        System.out.println(convertF[convertF.length-1].toString());
     }
 }
