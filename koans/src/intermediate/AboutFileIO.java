@@ -60,7 +60,7 @@ public class AboutFileIO {
         BufferedReader br = null;
         try {
             br = new BufferedReader(fr);
-            assertEquals(br.readLine(), "First line"_); // first line
+            assertEquals(br.readLine(), "First line"); // first line
             assertEquals(br.readLine(), "Second line"); // second line
             assertEquals(br.readLine(), null); // what now?
         } finally {
