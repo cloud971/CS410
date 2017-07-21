@@ -57,8 +57,8 @@ public class AboutArrays {
     @Koan
     public void arraysAreIndexedAtZero() {
         int[] integers = new int[]{1, 2};
-        assertEquals(integers[0], __);
-        assertEquals(integers[1], __);
+        assertEquals(integers[0], 1);
+        assertEquals(integers[1], 2);
     }
 
     @Koan
