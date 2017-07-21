@@ -71,7 +71,7 @@ public class AboutCollections {
         String[] array = {"a", "b", "c"};
         List<String> list = Arrays.asList(array);
         list.set(0, "x");
-        assertEquals(array[0], "x");
+        assertEquals(array[0], "a");
         array[0] = "a";
         assertEquals(list.get(0), "x");
         // Just think of it as quantum state teleportation...
