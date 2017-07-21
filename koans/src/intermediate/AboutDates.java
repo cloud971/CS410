@@ -67,7 +67,7 @@ public class AboutDates {
     public void usingDateFormatToParseDates() throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
         Date date2 = dateFormat.parse("01-01-2000");
-        assertEquals(date2.toString(), "Sat Jan 01 00:00:00 GMT 2000");
+        assertEquals(date2.toString(), "Sat Jan 01 00:00:00 PST 2000");
         // What happened to the time? What do you need to change to keep the time as well?
     }
 }
