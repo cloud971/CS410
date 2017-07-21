@@ -73,7 +73,7 @@ public class AboutCollections {
         list.set(0, "x");
         assertEquals(array[0], "x");
         array[0] = "a";
-        assertEquals(list.get(0), "x");
+        assertEquals(list.get(0), "a");
         // Just think of it as quantum state teleportation...
     }
 
