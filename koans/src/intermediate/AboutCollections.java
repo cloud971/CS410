@@ -33,12 +33,12 @@ public class AboutCollections {
         // PriorityQueue: simple queue implementation
         queue.add("Cat");
         queue.add("Dog");
-        assertEquals(queue.peek(), __);
-        assertEquals(queue.size(), __);
-        assertEquals(queue.poll(), __);
-        assertEquals(queue.size(), __);
-        assertEquals(queue.poll(), __);
-        assertEquals(queue.isEmpty(), __);
+        assertEquals(queue.peek(), "Cat");
+        assertEquals(queue.size(), 2);
+        assertEquals(queue.poll(), "Cat");
+        assertEquals(queue.size(), 1);
+        assertEquals(queue.poll(), "Dog");
+        assertEquals(queue.isEmpty(), true);
     }
 
     @Koan
