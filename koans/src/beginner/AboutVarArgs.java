@@ -40,7 +40,7 @@ public class AboutVarArgs {
 
     @Koan
     public void youCanPassInZeroArgumentsIfYouLike() {
-        assertEquals(new ExampleClass().getLength(), __);
+        assertEquals(new ExampleClass().getLength(), 0);
     }
 
     @Koan
