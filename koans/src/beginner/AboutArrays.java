@@ -27,7 +27,7 @@ public class AboutArrays {
     public void anArraysHashCodeMethodDoesNotConsiderElements() {
         int[] array0 = new int[]{0};
         int[] array1 = new int[]{0};
-        assertEquals(Integer.valueOf(array0.hashCode()).equals(array1.hashCode()), __); // not equal!
+        assertEquals(Integer.valueOf(array0.hashCode()).equals(array1.hashCode()), false); // not equal!
         // TODO: ponder the consequences when arrays are used in Hash Collection implementations.
     }
 
