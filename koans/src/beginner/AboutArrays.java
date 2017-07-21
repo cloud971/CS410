@@ -70,7 +70,7 @@ public class AboutArrays {
 
     @Koan
     public void arrayLengthCanBeChecked() {
-        assertEquals(new int[1].length, __);
+        assertEquals(new int[1].length, 1);
     }
 
 }
