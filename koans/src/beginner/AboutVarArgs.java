@@ -29,7 +29,7 @@ public class AboutVarArgs {
 
     @Koan
     public void varArgsCanBeTreatedAsArrays() {
-        assertEquals(new ExampleClass().canBeTreatedAsArray(1, 2, 3), __);
+        assertEquals(new ExampleClass().canBeTreatedAsArray(1, 2, 3), true);
     }
 
     @Koan
