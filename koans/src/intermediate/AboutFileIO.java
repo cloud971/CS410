@@ -89,9 +89,25 @@ public class AboutFileIO {
         pw.close();
 
         StringBuffer sb = new StringBuffer();
-        // Add the loop to go through the file line by line and add the line
-        // to the StringBuffer
-        assertEquals(sb.toString(),null);
+        String line;
+        BufferedReader read = new BufferedReader(new FileReader(file));
+        try {
+
+            do {
+
+                line = read.readLine();
+                if (line == null)
+                    break;
+
+                sb.append(line);
+
+            } while (line != null);
+
+        } finally {
+
+            closeStream(read);
+        }
+        assertEquals(sb.toString(),);
     }
 }
 
