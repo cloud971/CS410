@@ -59,7 +59,7 @@ public class AboutCollections {
         map.put("first key", "first value");
         map.put("second key", "second value");
         map.put("first key", "other value");
-        assertEquals(map.size(), 3);
+        assertEquals(map.size(), 2);
         assertEquals(map.containsKey("first key"), true);
         assertEquals(map.containsKey("second key"),true);
         assertEquals(map.containsValue("first value"), false);
