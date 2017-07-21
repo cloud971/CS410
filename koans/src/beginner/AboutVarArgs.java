@@ -34,8 +34,8 @@ public class AboutVarArgs {
 
     @Koan
     public void youCanPassInAsManyArgumentsAsYouLike() {
-        assertEquals(new ExampleClass().getLength(1, 2, 3), __);
-        assertEquals(new ExampleClass().getLength(1, 2, 3, 4, 5, 6, 7, 8), __);
+        assertEquals(new ExampleClass().getLength(1, 2, 3), 3);
+        assertEquals(new ExampleClass().getLength(1, 2, 3, 4, 5, 6, 7, 8), 8);
     }
 
     @Koan
