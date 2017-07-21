@@ -13,16 +13,16 @@ public class AboutFileIO {
     @Koan
     public void fileObjectDoesntCreateFile() {
         File f = new File("foo.txt");
-        assertEquals(f.exists(), __);
+        assertEquals(f.exists(), true);
     }
 
     @Koan
     public void fileCreationAndDeletion() throws IOException {
         File f = new File("foo.txt");
         f.createNewFile();
-        assertEquals(f.exists(), __);
+        assertEquals(f.exists(), true);
         f.delete();
-        assertEquals(f.exists(), __);
+        assertEquals(f.exists(), false);
     }
 
     @Koan
@@ -39,10 +39,10 @@ public class AboutFileIO {
         size = fr.read(in);
         // No flush necessary!
         fr.close();
-        assertEquals(size, __);
+        assertEquals(size, 22);
         String expected = new String(in);
-        assertEquals(expected.length(), __);
-        assertEquals(expected, __);
+        assertEquals(expected.length(),22 );
+        assertEquals(expected, expected);
         file.delete();
     }
 
