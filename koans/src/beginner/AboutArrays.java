@@ -51,7 +51,7 @@ public class AboutArrays {
     public void arraysAreMutable() {
         final boolean[] oneBoolean = new boolean[]{false};
         oneBoolean[0] = true;
-        assertEquals(oneBoolean[0], __);
+        assertEquals(oneBoolean[0],true);
     }
 
     @Koan
