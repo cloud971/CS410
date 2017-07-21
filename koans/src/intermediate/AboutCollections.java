@@ -47,10 +47,10 @@ public class AboutCollections {
         set.add("Dog");
         set.add("Cat");
         set.add("Dog");
-        assertEquals(set.size(), __);
-        assertEquals(set.contains("Dog"), __);
-        assertEquals(set.contains("Cat"), __);
-        assertEquals(set.contains("Chicken"), __);
+        assertEquals(set.size(), 2);
+        assertEquals(set.contains("Dog"), true);
+        assertEquals(set.contains("Cat"), true);
+        assertEquals(set.contains("Chicken"), false);
     }
 
     @Koan
