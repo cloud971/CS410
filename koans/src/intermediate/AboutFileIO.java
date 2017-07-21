@@ -107,7 +107,8 @@ public class AboutFileIO {
 
             closeStream(read);
         }
-        assertEquals(sb.toString(),);
+
+        assertEquals(sb.toString(),"1. line2. line");
     }
 }
 
