@@ -30,7 +30,7 @@ public class AboutInnerClasses {
     @Koan
     public void creatingInnerClassInstanceWithOtherSyntax() {
         AboutInnerClasses.Inner someObject = this.new Inner();
-        assertEquals(someObject.doStuff(), __);
+        assertEquals(someObject.doStuff(),"stuff");
     }
 
     private int x = 10;
