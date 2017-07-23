@@ -31,8 +31,8 @@ public class AboutLocale {
     @Koan
     public void getCountryInformation() {
         Locale locBR = new Locale("pt", "BR");
-        assertEquals(locBR.getDisplayCountry(), __);
-        assertEquals(locBR.getDisplayCountry(locBR), __);
+        assertEquals(locBR.getDisplayCountry(), "Brazil");
+        assertEquals(locBR.getDisplayCountry(locBR), "Brasil");
 
         Locale locCH = new Locale("it", "CH");
         assertEquals(locCH.getDisplayCountry(), __);
