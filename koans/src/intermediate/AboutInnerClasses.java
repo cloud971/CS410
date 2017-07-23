@@ -134,7 +134,7 @@ public class AboutInnerClasses {
     @Koan
     public void staticInnerClass() {
         StaticInnerClass someObject = new StaticInnerClass();
-        assertEquals(someObject.importantNumber(), __);
+        assertEquals(someObject.importantNumber(), 3);
         // What happens if you try to access 'x' or 'theAnswer' from the outer class?
         // What does this mean for static inner classes?
         // Try to create a sub package of this package which is named 'StaticInnerClass'
@@ -144,7 +144,7 @@ public class AboutInnerClasses {
     @Koan
     public void staticInnerClassFullyQualified() {
         AboutInnerClasses.StaticInnerClass someObject = new AboutInnerClasses.StaticInnerClass();
-        assertEquals(someObject.importantNumber(), __);
+        assertEquals(someObject.importantNumber(), 3);
     }
 
 }
