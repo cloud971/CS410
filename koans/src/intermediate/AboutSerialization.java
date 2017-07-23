@@ -104,7 +104,7 @@ public class AboutSerialization {
         try {
             is = new ObjectInputStream(new FileInputStream("SerializeFile"));
             Car deserializedCar = (Car) is.readObject();
-            assertEquals(deserializedCar.engine.type, __);
+            assertEquals(deserializedCar.engine.type, "diesel");
         } finally {
             closeStream(is);
         }
