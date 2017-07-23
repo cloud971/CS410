@@ -111,7 +111,7 @@ public class AboutInnerClasses {
         // Try to change the 'Inner' below to "AboutInnerClasses'
         // Why do you get an error?
         // What does that imply for inner classes and inheritance?
-        assertEquals(someObject instanceof Inner, __);
+        assertEquals(someObject instanceof Inner, true);
     }
 
     class OtherInner extends AboutInnerClasses {
