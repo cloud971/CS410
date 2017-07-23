@@ -48,7 +48,7 @@ public class AboutInnerClasses {
                 return 100;
             }
         }
-        assertEquals(new MethodInnerClass().oneHundred(), __);
+        assertEquals(new MethodInnerClass().oneHundred(), 100);
         // Where can you use this class?
     }
 
