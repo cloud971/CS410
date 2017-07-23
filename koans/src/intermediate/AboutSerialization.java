@@ -55,7 +55,7 @@ public class AboutSerialization {
         try {
             is = new ObjectInputStream(new FileInputStream("SerializeFile"));
             Starship onTheOtherSide = (Starship) is.readObject();
-            assertEquals(onTheOtherSide.maxWarpSpeed, __);
+            assertEquals(onTheOtherSide.maxWarpSpeed, 9);
         } finally {
             closeStream(is);
         }
