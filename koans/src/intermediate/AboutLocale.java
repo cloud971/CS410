@@ -25,7 +25,7 @@ public class AboutLocale {
         Locale localeJA = new Locale("de"); // German
         DateFormat dateformatJA = DateFormat.getDateInstance(DateFormat.FULL, localeJA);
         // Well if you don't know how to type these characters, try "de", "it" or "us" ;-)
-        assertEquals(dateformatJA.format(date), __);
+        assertEquals(dateformatJA.format(date), "Sonntag, 3. April 2011");
     }
 
     @Koan
