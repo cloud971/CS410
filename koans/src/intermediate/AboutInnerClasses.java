@@ -38,7 +38,7 @@ public class AboutInnerClasses {
     @Koan
     public void accessingOuterClassMembers() {
         Inner someObject = new Inner();
-        assertEquals(someObject.returnOuter(), __);
+        assertEquals(someObject.returnOuter(), 10);
     }
 
     @Koan
