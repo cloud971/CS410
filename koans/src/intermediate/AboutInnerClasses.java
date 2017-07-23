@@ -122,7 +122,7 @@ public class AboutInnerClasses {
         OtherInner someObject = new OtherInner();
         // What do you expect here?
         // Compare this result with the last koan. What does that mean?
-        assertEquals(someObject instanceof AboutInnerClasses, __);
+        assertEquals(someObject instanceof AboutInnerClasses, true);
     }
 
     static class StaticInnerClass {
