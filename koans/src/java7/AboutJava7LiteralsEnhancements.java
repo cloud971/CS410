@@ -18,7 +18,7 @@ public class AboutJava7LiteralsEnhancements {
     public void binaryLiteralsWithUnderscores() {
         //literals can use underscores for improved readability
         short binaryLiteral = 0b1111_1111;
-        assertEquals(binaryLiteral, (short) 225);
+        assertEquals(binaryLiteral, (short) 255);
     }
 
     @Koan
