@@ -45,6 +45,6 @@ public class AboutLocale {
         float someAmount = 442.23f; // Don't use floats for money in real life. Really. It's a bad idea.
         Locale locBR = new Locale("pt", "BR");
         NumberFormat nf = NumberFormat.getCurrencyInstance(locBR);
-        assertEquals(nf.format(someAmount), "R$ 442,23");
+        assertEquals(nf.format(someAmount), "R$442,23");
     }
 }
