@@ -87,7 +87,7 @@ public class AboutInnerClasses {
                 return 23;
             }
         };// <- Why do you need a semicolon here?
-        assertEquals(anonymous.theAnswer(), __);
+        assertEquals(anonymous.theAnswer(), 23);
     }
 
     @Koan
