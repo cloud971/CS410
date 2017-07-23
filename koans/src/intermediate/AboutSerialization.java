@@ -26,7 +26,7 @@ public class AboutSerialization {
         try {
             is = new ObjectInputStream(new FileInputStream("SerializeFile"));
             String otherString = (String) is.readObject();
-            assertEquals(otherString, __);
+            assertEquals(otherString, "Hello world");
         } finally {
             closeStream(is);
         }
