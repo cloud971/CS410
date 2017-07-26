@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.chasam;
 
 import edu.pdx.cs410J.AbstractAirline;
+import edu.pdx.cs410J.AirportNames;
 import java.util.*;
 import java.text.*;
 
@@ -9,222 +10,299 @@ import java.text.*;
  */
 public class Project2 {
 
+   private static String readMe;
+   private static Airline airlineInfo;
+   private static TextParser parseMe;
+   private static TextDumper dumping;
+
+
   public static void main(String[] args) {
-    Class c = AbstractAirline.class;  // Refer to one of Dave's classes so that we can be sure it is on the classpath
+      Class c = AbstractAirline.class;  // Refer to one of Dave's classes so that we can be sure it is on the classpath
 
-    Airline Airline_info = null;
-    String readMe = new String("Sam Cha\nProject 1\n7/12/17\n\nThis is the first project for CS410p Advanced Java.\n" +
-            "The purpose of this program is to create an airline and add a flight to the airline.\n" +
-            "The program takes arguments from the command line and error checks for bad inputs.\nAfter this step a flight is created\n" +
-            "and stored inside an arraylist data structure." + "\nThere are four features that this program has.\n" +
-            "The first feature is adding flights/airlines, second is displaying the airline,\nThe third feature displays the flight informationan\n" +
-            "and the last feature displays a read me to the user.\n");
+      String Bob = AirportNames.getName("PDX");
 
-    TextParser checkName; // checks for same airline
-    TextDumper addMe; // adds flight to text file
-    String theName;
-    int error = 0;
+      readMe = new String("Sam Cha\nProject 1\n7/12/17\n\nThis is the first project for CS410p Advanced Java.\n" +
+              "The purpose of this program is to create an airline and add a flight to the airline.\n" +
+              "The program takes arguments from the command line and error checks for bad inputs.\nAfter this step a flight is created\n" +
+              "and stored inside an arraylist data structure." + "\nThere are four features that this program has.\n" +
+              "The first feature is adding flights/airlines, second is displaying the airline,\nThe third feature displays the flight informationan\n" +
+              "and the last feature displays a read me to the user.\n");
 
+      TextParser checkName; // checks for same airline
+      TextDumper addMe; // adds flight to text file
+      String theName;
 
-    // tracker
-    int index = 0;
+      int error = 0;
 
-    // too many args
-    if (args.length > 12) {
+      // tracker
+      int index = 0;
 
-        System.out.println("You have entered too much information");
-        return;
-    }
+      // too many args
+      if (args.length > 16) {
 
-    // no args
-    else if(args.length == 0) {
+          System.out.println("You have entered too much information");
+          return;
+      }
 
-        System.out.println("You have not entered any information");
-        return;
-    }
+      // no args
+      else if (args.length == 0) {
 
-    //prints readme
-    else if (args.length == 1 && args[0].equals("-README")){
+          System.out.println("You have not entered any information");
+          return;
+      }
 
-        System.out.println(readMe);
-        return;
-    }
+      //prints readme
+      else if (args[0].equals("-README")) {
 
-    // user wants to print flight but no information
-    else if(args.length == 1 && args[0].equals("-print")) {
+          System.out.println(readMe);
+          return;
+      }
 
-        System.out.println("There is no flight information");
-        return;
-    }
+      int pretty = -1;
+      int readThis = -1;
+      int printNum = -1;
+      int textRead = -1;
+      int total = 10;
 
-    // the user wants to add to file
-    else if(args.length == 1 && args[0].equals("-textFile")){
+      for (int i = 0; i < args.length; ++i) {
 
-        System.out.println("You have not entered anything to add to the file");
-    }
+          if (args[i].equals("-print"))
+              printNum = i;
+          if (args[i].equals("-textFile"))
+              textRead = i;
+          if (args[i].equals("-pretty"))
+              pretty = i;
+          if (args[i].equals("-README"))
+              readThis = i;
+      }
 
-    //not enough args
-    else if(args.length < 8){
+      if (pretty >= 0)
+          total += 2;
 
-        System.out.println("You are missing information about your flight");
-        return;
-    }
+      if (printNum >= 0)
+          total += 1;
 
-    // print readme and leave
-    else if(args[0].equals("-README")){
+      if (readThis >= 0)
+          total += 1;
 
-      System.out.println(readMe);
-      return;
-    }
+      if (textRead >= 0)
+          total += 2;
 
+      if (total != args.length) {
 
-    //first index is print
-    else if(args[0].equals("-print")){
+          System.out.println("You have missing arguments");
+          return;
+      }
 
-        String flightInfo;
+      // do everything
+      else if (args.length == 16)
+          index = 6;
 
-        // check if read me is next and not write to file, prints the flight and readme
-        if(args[1].equals("-README") && !args[2].equals("-textFile ") && args.length == 10){
+      else if (args.length == 15)
+          index = 5;
 
-            index = 2;
+      else if (args.length == 14)
+          index = 4;
 
-            if (!Bad_Input(args,index)){
+      else if (args.length == 13)
+          index = 3;
 
-                Airline_info = new Airline(args,index);
-                flightInfo = Airline_info.toString();
-                System.out.println(flightInfo);
-                Airline_info.display();
-            }
+      else if (args.length == 12)
+          index = 2;
 
-            System.out.println(readMe);
-        }
+      else if (args.length == 11)
+          index = 1;
 
-        // user only wants to print and the next thing is a print file
-        else if(args[1].equals("-textFile")){
+      else if (args.length == 10)
+          index = 0;
 
-            boolean showRead = false; // shows read me
+      if (noZone(args[index + 2], args[index + 6]))
+          return;
 
-            // check if the user wants to display readme
-            if(args[3].equals("-README"))
-                showRead = true;
-
-            // check to see of the use has enough info
-            if (showRead == true && args.length != 12){
-
-                System.out.println("Number of arguments is invalid");
-                return;
-            }
-
-            // the user doesnt want to display readme, must have 11 args
-            if (showRead == false && args.length != 11){
-
-                System.out.println("Number of arguments is invalid");
-                return;
-            }
-
-            if (showRead == true) {
-
-                theName = args[2];
-                index = 4;
-            }
-            else {
-
-                theName = args[2];
-                index = 3;
-            }
-
-            // checks for bad inputs
-            if (!Bad_Input(args,index)){
-
-                checkName = new TextParser();
-
-                // checks if the file can be found
-                if(checkName.checkFile(theName)){
-
-                    // the file is parsed
-                    if (checkName.parseFile()){
-
-                        Airline_info = checkName.parse();
-
-                        // airline has the same name
-                        if(Airline_info.sameName(args[index])){
-
-                            Airline_info.mainAdd(args, index+1);
-
-                            TextDumper dumping = new TextDumper(theName);
-                            dumping.dump(Airline_info);
-                            Airline_info.printnew();
-                        }
-
-                        else
-                            System.out.println("Airline names are not the same");
-                    }
-
-                    else {
-
-                        System.out.println("Your airline name doesnt match the file or the file isn't formatted correct");
-                    }
-                }
-
-                // the file isnt found and create the file and add to begining
-                else{
-
-                    TextDumper dumping = new TextDumper(theName,1);
-                    checkName.makeFile();
-                    Airline_info = new Airline(args,index);
-                    dumping.dump(Airline_info);
-
-                    System.out.println(Airline_info.toString());
-                    Airline_info.printnew();
-                }
-
-                if (showRead)
-                    System.out.println(readMe);
-            }
-        }
-
-        // user wants to read second
-        else if(args[1].equals("-README")) {
-
-            if (args.length != 10){
-                System.out.println("Missing arguments or too many");
-                return;
-            }
-
-            index = 2;
-            Airline_info = new Airline(args,index);
-            System.out.println(Airline_info.toString());
-            Airline_info.display();
-            System.out.println(readMe);
-
-        }
-
-        // user wants to print the flight and add
-        else if(args.length == 9){
-
-            index= 1;
-            Airline_info = new Airline(args,index);
-            System.out.println(Airline_info.toString());
-            Airline_info.display();
-        }
-    }
-
-    // user wants to add to text file
-    else if (args[0].equals("-textFile"))
-        fileFirst(readMe,Airline_info,index,args);
+      if (!Bad_Input(args, index)) {
 
 
-    // no readme, print or file read
-    else if(args.length == 8){
+          if (total == 10)
+              createObj(args, index);
 
-        if (!Bad_Input(args, index)) {
+          if (total == 11) {  // prints and adds flight
 
-            System.out.println("Your flight has been added");
-            Airline_info = new Airline(args, index);
-        }
-    }
+              createObj(args, index);
+              airlineInfo.printnew();
+          }
 
+          if (total == 12) { // 3 options print read, text,pretty
+
+              if (textRead == 0) // user wants to print to textfile
+                  parseWrapper(args, args[1], index);
+
+
+              else if (pretty == 0) {// pretty print
+
+              }
+
+              else if (printNum == 0) { // print and read
+
+                  createObj(args, index);
+                  airlineInfo.printnew();
+                  System.out.println(readMe);
+                  return;
+              }
+          }
+
+          else if (total == 13){
+
+              // parse file then print we know that read me cant be first
+              if(textRead == 0|| textRead == 2){
+
+                  parseWrapper(args, args[textRead + 1], index);
+
+                  if (readThis == 2){
+                      // print only if i was able to parse
+                      return;
+                  }
+              }
+
+
+              else{ // did something pretty now print
+
+                  // do something pretty
+                  if (readThis ==2){
+                      return;
+                  }
+              }
+
+              System.out.println(readMe);
+          }
+
+          else if (total == 14){
+
+              if (textRead>=0&&pretty >= 0){
+
+                  parseWrapper(args,args[textRead+1],index);
+                  //DO SOMETHING PRETTY
+
+                  return;
+              }
+
+              else if(pretty < 0)
+                  parseWrapper(args,args[textRead+1],index);
+
+              else{
+
+                  // DO SOMETHING PRETTY
+              }
+
+              // ONLY PRINT IF SUCCESSFULL
+              if (readThis == 3){
+
+              }
+          }
+
+          else if(total ==15){
+
+              if (readThis == 4){ // read me is last parse file pretty print
+
+                  parseWrapper(args,args[textRead+1],index);
+                  // DO SOMETHING PRETTY
+                  System.out.println(readMe);
+                  return;
+              }
+
+              else if (pretty<textRead){ // pretty is first, read is middle
+
+                  // DO SOMETHING PRETTY
+              }
+
+              else{ // parse text is first and read is middle
+
+                  parseWrapper(args,args[textRead+1],index);
+              }
+
+              System.out.println(readMe);
+              return;
+          }
+
+          else if (total == 16){
+
+          }
+
+      }
   }
+
+
+  public static boolean noZone(String src,String destiny){
+
+      if(AirportNames.getName(src) == null && AirportNames.getName(destiny) == null) {
+
+          System.out.println("Error unknown code of arrival and departure");
+          return true;
+      }
+
+      else if(AirportNames.getName(src)!= null && AirportNames.getName(destiny) == null) {
+
+          System.out.println("Error unknown code of arrival");
+          return true;
+      }
+
+      else if(AirportNames.getName(src)== null && AirportNames.getName(destiny) != null) {
+
+          System.out.println("Error unknown code of departure");
+          return true;
+      }
+
+      return false;
+  }
+
+  // checks if file can be parsed
+  public static boolean parseWrapper(String [] args, String folderName, int place){
+
+      parseMe = new TextParser();
+
+      // checks if the file can be found
+      if(parseMe.checkFile(folderName)){
+
+          // the file is parsed
+          if (parseMe.parseFile()){
+
+              airlineInfo = parseMe.parse();
+
+              // airline has the same name
+              if(airlineInfo.sameName(args[place])){
+
+                  airlineInfo.mainAdd(args, place+1);
+                  TextDumper dumping = new TextDumper(folderName);
+                  dumping.dump(airlineInfo);
+              }
+
+              else
+                  System.out.println("Airline names are not the same");
+          }
+
+          else {
+
+              System.out.println("Your airline name doesnt match the file or the file isn't formatted correct");
+          }
+      }
+
+      // the file isnt found and create the file and add to begining
+      else{
+
+          TextDumper dumping = new TextDumper(folderName,1);
+          parseMe.makeFile();
+          airlineInfo = new Airline(args,place);
+          dumping.dump(airlineInfo);
+      }
+
+      return true;
+  }
+
+  // creates new obj airline
+  public static void createObj(String [] data, int placeholder){
+
+      airlineInfo = new Airline(data,placeholder);
+  }
+
 
   // checks for bad inputs
   public static boolean Bad_Input(String[] Check_Err,int index){
@@ -248,279 +326,98 @@ public class Project2 {
 
       // Src greater than length and contains numbers
       else if(Check_Err[index+2].length() != 3 || !Check_Err[index+2].matches("[a-zA-Z]+")) {
-
           System.out.println("Your code of departure needs to be a three letter code ex:abc");
           return true;
       }
 
 
-      else if(!Check_date(Check_Err[index+3],dateFormat)){ // check for valid departure date format
+      else if(!Check_date(Check_Err[index+3])){ // check for valid departure date format
 
-          System.out.println("Your departure date needs to be in one of these formats, mm/dd/yyyy, m/dd/yyyy, mm/d/yyyy ");
+          System.out.println("Your departure date needs to be in one of th formats, mm/dd/yyyy, m/dd/yyyy, mm/d/yyyy");
             return true;
       }
 
-      else if (!Check_time(Check_Err[index+4])){ // check for valid departure time format
+      else if (!Check_time(Check_Err[index+4], Check_Err[index+5])){ // check for valid departure time format
 
-          System.out.println("Your departure time is invalid, ex: 5:23");
+          System.out.println("Your departure time is invalid, ex: 5:23 AM");
           return true;
       }
 
       // check for valid arrival airport code
-      else if(Check_Err[index+5].length() != 3 || !Check_Err[index+5].matches("[a-zA-Z]+")) {
+      else if(Check_Err[index+6].length() != 3 || !Check_Err[index+6].matches("[a-zA-Z]+")) {
 
           System.out.println("Your code of arrival needs to be three letters ex:abc");
           return true;
       }
 
       // check for valid arrival date
-      else if(!Check_date(Check_Err[index+6],dateFormat)){ // check for valid departure date format
+      else if(!Check_date(Check_Err[index+7])){ // check for valid departure date format
 
           System.out.println("Your arrival date needs to be in one of these formats, mm/dd/yyyy, m/dd/yyyy, mm/d/yyyy ");
             return true;
       }
 
-      else if (!Check_time(Check_Err[index+7])){ // check for valid departure time format
+      else if (!Check_time(Check_Err[index+8],Check_Err[index+9])){ // check for valid departure time format
 
           System.out.println("Your arrival time is invalid ex: 10:04");
           return true;
       }
 
+      else if(noZone(Check_Err[index+2],Check_Err[index+6]))
+          return true;
+
       return false;
   }
+
 
   // checks for incorrect time format
-  public static boolean Check_date(String theDate, String theFormat){
+  public static boolean Check_date(String theDate){
 
-      Date aDate = null;
+      String [] theDateSplit;
+      theDateSplit = theDate.split("/");
 
-      try {
+      if(theDateSplit.length != 3)
+          return false;
 
-          SimpleDateFormat cFormat = new SimpleDateFormat(theFormat);
-          aDate = cFormat.parse(theDate);
+      // this is the month
+      if(((theDateSplit[0].length() !=2)^(theDateSplit[0].length() != 1)) == false)
+          return false;
 
-          if(theDate.equals(cFormat.format(aDate))){
+      // this is the year
+      if(((theDateSplit[1].length() !=2)^(theDateSplit[1].length() != 1)) == false)
+          return false;
 
-              return true;
-          }
+      if (theDateSplit[2].length() != 4)
+          return false;
 
-          // adding a zero to account for missing zero on single month
-          // also accounts for m/dd/yyyy
-          else if (("0"+theDate).equals(cFormat.format(aDate))){
-
-              return true;
-          }
-
-          cFormat = new SimpleDateFormat("M/d/yyyy");
-          aDate = cFormat.parse(theDate);
-
-          // checking for only one digit day and month, no leading zeros
-          if (theDate.equals(cFormat.format(aDate)))
-
-              return true;
-
-
-          cFormat = new SimpleDateFormat("MM/d/yyyy");
-          aDate = cFormat.parse(theDate);
-
-          // checking for month with leading zero and single digit day
-          if (theDate.equals(cFormat.format(aDate)))
-
-              return true;
-
-
-      } catch (ParseException ex) {
-          System.out.println("Can't parse");
-      }
-
-      return false;
+      return true;
   }
 
-  // checks for correct time format
-  public static boolean Check_time(String timeString){
+    // checks for correct time format
+    public static boolean Check_time(String timeString, String marker){
 
-      String timeFormat ="HH:mm";
-      Date timeDate;
+        String timeFormat ="hh:mm";
+        Date timeDate;
 
-      try {
+        if (!marker.equals("AM") && !marker.equals("PM"))
+            return false;
 
-          SimpleDateFormat sFormat = new SimpleDateFormat(timeFormat);
-          timeDate = sFormat.parse(timeString);
+        try {
 
-          if (timeString.equals(sFormat.format(timeDate)))
-              return true;
+            SimpleDateFormat sFormat = new SimpleDateFormat(timeFormat);
+            timeDate = sFormat.parse(timeString);
 
-          // accounts for single time
-          else if (("0"+timeString).equals(sFormat.format(timeDate)))
+            if (timeString.equals(sFormat.format(timeDate)))
+                return true;
 
-              return true;
+                // accounts for single time
+            else if (("0"+timeString).equals(sFormat.format(timeDate)))
+                return true;
 
-      }catch (ParseException ex){
+        }catch (ParseException ex){
 
-      }
+        }
 
-      return false;
-  }
-
-
-  public static void fileFirst(String readme, Airline theList, int theIndex,String [] info){
-
-      String flightInfo;
-
-      // check if read me is next and not write to file, prints the flight and readme
-      if(info[2].equals("-README") && info.length == 11){
-
-          theIndex = 3;
-
-          if (!Bad_Input(info,theIndex)) {
-
-              TextParser parseMe = new TextParser();
-
-              if (parseMe.checkFile(info[1])) {
-
-                  // the file is parsed
-                  if (parseMe.parseFile()) {
-
-                      theList = parseMe.parse();
-
-                      // airline has the same name
-                      if (theList.sameName(info[theIndex])) {
-
-                          theList.mainAdd(info, theIndex + 1);
-                          TextDumper dumping = new TextDumper(info[1]);
-                          dumping.dump(theList);
-                      }
-
-                      else
-                          System.out.println("Error Airline names are different");
-                  }
-
-                  else
-                      System.out.println("File can't be parsed");
-              }
-
-              // the file isnt found and create the file and add to begining
-              else {
-
-                  TextDumper dumping = new TextDumper(info[1], 1);
-                  parseMe.makeFile();
-                  theList = new Airline(info, theIndex);
-                  dumping.dump(theList);
-              }
-          }
-
-          System.out.println(readme);
-      }
-
-      // user wants to print and add to file
-      else if(info[2].equals("-print")){
-
-          boolean reads = false;
-
-          if (info[3].equals("-README") && info.length != 12) {
-
-              System.out.println("Missing arguments");
-              return;
-          }
-
-          else if(info[3].equals("-README"))
-              reads = true;
-
-          if (reads)
-              theIndex = 4;
-
-          if (!reads)
-              theIndex = 3;
-
-          if(!Bad_Input(info,theIndex)){
-
-              TextParser parseMe = new TextParser();
-
-              if (parseMe.checkFile(info[1])) {
-
-                  // the file is parsed
-                  if (parseMe.parseFile()) {
-
-                      theList = parseMe.parse();
-
-                      // airline has the same name
-                      if (theList.sameName(info[theIndex])) {
-
-                          theList.mainAdd(info, theIndex + 1);
-                          TextDumper dumping = new TextDumper(info[1]);
-                          dumping.dump(theList);
-                          theList.printnew();
-                      }
-
-                      else
-                          System.out.println("Error Airline names are different");
-                  }
-
-                  else
-                      System.out.println("File can't be parsed");
-              }
-
-              // the file isnt found and create the file and add to begining
-              else {
-
-                  TextDumper dumping = new TextDumper(info[1], 1);
-                  parseMe.makeFile();
-                  theList = new Airline(info, theIndex);
-                  dumping.dump(theList);
-                  theList.printnew();
-              }
-          }
-
-          if(reads)
-              System.out.println();
-      }
-
-      // user only wants to add to file
-      else if(info.length == 10){
-
-          theIndex = 2;
-
-          if (!Bad_Input(info,theIndex)) {
-
-              TextParser parseMe = new TextParser();
-
-              if (parseMe.checkFile(info[1])) {
-
-                  // the file is parsed
-                  if (parseMe.parseFile()) {
-
-                      theList = parseMe.parse();
-
-                      // airline has the same name
-                      if (theList.sameName(info[theIndex])) {
-
-                          theList.mainAdd(info, theIndex + 1);
-                          TextDumper dumping = new TextDumper(info[1]);
-                          dumping.dump(theList);
-                      }
-
-                      else
-                          System.out.println("Error Airline names are different");
-                  }
-
-                  else
-                      System.out.println("File can't be parsed");
-              }
-
-              // the file isnt found and create the file and add to begining
-              else {
-
-                  TextDumper dumping = new TextDumper(info[1], 1);
-                  parseMe.makeFile();
-                  theList = new Airline(info, theIndex);
-                  dumping.dump(theList);
-              }
-          }
-      }
-
-      else
-          System.out.println("Error with arguments");
-
-      return;
-  }
+        return false;
+    }
 }

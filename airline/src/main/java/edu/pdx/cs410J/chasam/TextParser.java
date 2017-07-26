@@ -21,10 +21,6 @@ public class TextParser implements AirlineParser<Airline> {
 
     }
 
-    public TextParser(String airline){
-
-    }
-
     @Override
     public Airline parse(){
 
@@ -78,22 +74,30 @@ public class TextParser implements AirlineParser<Airline> {
 
                 array = error.split(",");
 
-                if(array.length !=8){
+                if(array.length !=10){
 
-                    System.out.println("Error parsing the file");
+                    System.out.println("Error parsing file");
                     return false;
                 }
 
                 // checks to see if i can add the thing in
                 else{
 
-                    if(wrong_Input(array)){
+                    if(Project2.Bad_Input(array,0)){
 
-                        System.out.println("File was not formatted correct");
+                        System.out.println("File was not formatted correctly");
                         return false;
                     }
 
                     else{
+
+                        // airlines from the file dont match
+
+                        if(airlines.getName()!= null && !array[0].equals(airlines.getName())) {
+
+                            System.out.println("File was not formatted correctly!");
+                            return false;
+                        }
 
                         airlines.toAdd(array);
                     }
@@ -119,127 +123,4 @@ public class TextParser implements AirlineParser<Airline> {
 
         }
     }
-
-    public boolean wrong_Input(String[] Check_Err){
-
-        String regex ="[0-9]+";
-        String dateFormat = "MM/dd/yyyy";
-
-
-        if(!Check_Err[1].matches(regex)) { // Check for valid flightnumber
-
-            return true;
-        }
-
-        // Src greater than length and contains numbers
-        else if(Check_Err[2].length() != 3 || !Check_Err[2].matches("[a-zA-Z]+")) {
-
-            return true;
-        }
-
-
-        else if(!Check_date(Check_Err[3],dateFormat)){ // check for valid departure date format
-
-            return true;
-        }
-
-        else if (!Check_time(Check_Err[4])){ // check for valid departure time format
-
-            System.out.println("Your departure time is invalid, ex: 5:23");
-            return true;
-        }
-
-        // check for valid arrival airport code
-        else if(Check_Err[5].length() != 3 || !Check_Err[5].matches("[a-zA-Z]+")) {
-
-            return true;
-        }
-
-        // check for valid arrival date
-        else if(!Check_date(Check_Err[6],dateFormat)){ // check for valid departure date format
-
-            return true;
-        }
-
-        else if (!Check_time(Check_Err[7])){ // check for valid departure time format
-
-            return true;
-        }
-
-        return false;
-    }
-
-    // checks for incorrect time format
-    public boolean Check_date(String theDate, String theFormat){
-
-        Date aDate = null;
-
-        try {
-
-            SimpleDateFormat cFormat = new SimpleDateFormat(theFormat);
-            aDate = cFormat.parse(theDate);
-
-            if(theDate.equals(cFormat.format(aDate))){
-
-                return true;
-            }
-
-            // adding a zero to account for missing zero on single month
-            // also accounts for m/dd/yyyy
-            else if (("0"+theDate).equals(cFormat.format(aDate))){
-
-                return true;
-            }
-
-            cFormat = new SimpleDateFormat("M/d/yyyy");
-            aDate = cFormat.parse(theDate);
-
-            // checking for only one digit day and month, no leading zeros
-            if (theDate.equals(cFormat.format(aDate)))
-
-                return true;
-
-
-            cFormat = new SimpleDateFormat("MM/d/yyyy");
-            aDate = cFormat.parse(theDate);
-
-            // checking for month with leading zero and single digit day
-            if (theDate.equals(cFormat.format(aDate)))
-
-                return true;
-
-
-        } catch (ParseException ex) {
-            System.out.println("Can't parse");
-        }
-
-        return false;
-    }
-
-    // checks for correct time format
-    public static boolean Check_time(String timeString){
-
-        String timeFormat ="HH:mm";
-        Date timeDate;
-
-        try {
-
-            SimpleDateFormat sFormat = new SimpleDateFormat(timeFormat);
-            timeDate = sFormat.parse(timeString);
-
-            if (timeString.equals(sFormat.format(timeDate)))
-                return true;
-
-                // accounts for single time
-            else if (("0"+timeString).equals(sFormat.format(timeDate)))
-
-                return true;
-
-        }catch (ParseException ex){
-
-        }
-
-        return false;
-    }
-
 }

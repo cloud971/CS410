@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.*;
 
 /**
  * Created by Yoda on 7/16/2017.
@@ -50,12 +49,13 @@ public class TextDumper implements AirlineDumper<Airline> {
         writeMe.append(convertF[convertF.length-1].getNumber()+","); // flight number
         writeMe.append(convertF[convertF.length-1].getSource()+","); // get src
 
-        the_dates = convertF[convertF.length-1].getDepartureString().split(" ");
+        the_dates = convertF[convertF.length-1].getD().split(" ");
 
-        writeMe.append(the_dates[0]+","+the_dates[1]+","); // gets depature time and date
-        writeMe.append(convertF[convertF.length-1].getDestination()+","); // get dest
-        the_dates = convertF[convertF.length-1].getArrivalString().split(" ");
-        writeMe.append(the_dates[0]+","+the_dates[1]);
+        writeMe.append(the_dates[0]+","+the_dates[1]+","+the_dates[2]+","); // gets depature time and date
+        writeMe.append(convertF[convertF.length-1].getDestination()+",");
+        the_dates = convertF[convertF.length-1].getA().split(" "); // gets arrival time and date
+        writeMe.append(the_dates[0]+","+the_dates[1]+","+the_dates[2]); // append
+
 
         try {
 
