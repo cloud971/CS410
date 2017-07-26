@@ -20,7 +20,7 @@ public class AboutBase64 {
             // This uses the basic Base64 encoding scheme but there are corresponding
             // getMimeEncoder and getUrlEncoder methods available if you require a
             // different format/Base64 Alphabet 
-            assertEquals(encodedText, Base64.getEncoder().encodeToString(__.getBytes("utf-8")));
+            assertEquals(encodedText, Base64.getEncoder().encodeToString(encodedText.getBytes("utf-8")));
         } catch (UnsupportedEncodingException ex) {}
     }
 
