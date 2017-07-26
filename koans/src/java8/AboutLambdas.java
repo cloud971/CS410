@@ -31,7 +31,7 @@ public class AboutLambdas {
     public void verySimpleLambda() throws InterruptedException {
         Runnable r8 = () -> str = "changed in lambda";
         r8.run();
-        assertEquals(str, __);
+        assertEquals(str, "changed in lambda");
     }
 
     @Koan
@@ -40,7 +40,7 @@ public class AboutLambdas {
             return n.toUpperCase();
         };
         String capitalized = caps.capitalize("James");
-        assertEquals(capitalized, __);
+        assertEquals(capitalized, "JAMES");
     }
 
     @Koan
@@ -50,12 +50,12 @@ public class AboutLambdas {
         //parameter parenthesis can be omitted for single parameter lambda
         Caps caps = s -> s.toUpperCase();
         String capitalized = caps.capitalize("Arthur");
-        assertEquals(capitalized, __);
+        assertEquals(capitalized, "ARTHUR");
     }
 
     @Koan
     public void lambdaField() {
-        assertEquals(thisLambdaField.capitalize(""), __);
+        assertEquals(thisLambdaField.capitalize("Sam"), "SAM");
     }
 
     @Koan
