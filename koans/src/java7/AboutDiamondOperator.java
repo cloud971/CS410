@@ -25,7 +25,7 @@ public class AboutDiamondOperator {
         String[] animals = {"Dog", "Cat", "Tiger", "Elephant", "Zebra"};
         //type of new ArrayList<>() inferred from method parameter
         List<String> animalsList = fill(new ArrayList<>());
-        assertEquals(animalsList,Arrays.asList(animalsList));
+        assertEquals(animalsList,animals);
     }
 
     private List<String> fill(List<String> list) {
