@@ -3,9 +3,6 @@ package edu.pdx.cs410J.chasam;
 import edu.pdx.cs410J.AirlineParser;
 
 import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by Yoda on 7/16/2017.
@@ -83,7 +80,7 @@ public class TextParser implements AirlineParser<Airline> {
                 // checks to see if i can add the thing in
                 else{
 
-                    if(Project2.Bad_Input(array,0)){
+                    if(Project3.Bad_Input(array,0)){
 
                         System.out.println("File was not formatted correctly");
                         return false;

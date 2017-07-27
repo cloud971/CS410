@@ -8,7 +8,7 @@ import java.text.*;
 /**
  * The main class for the CS410J airline Project
  */
-public class Project2 {
+public class Project3 {
 
    private static String readMe;
    private static Airline airlineInfo;
