@@ -14,6 +14,8 @@ public class Project2 {
    private static Airline airlineInfo;
    private static TextParser parseMe;
    private static TextDumper dumping;
+   private static PrettyPrinter soPretty;
+   private static int index = 0;
 
 
   public static void main(String[] args) {
@@ -35,7 +37,6 @@ public class Project2 {
       int error = 0;
 
       // tracker
-      int index = 0;
 
       // too many args
       if (args.length > 16) {
@@ -76,8 +77,11 @@ public class Project2 {
               readThis = i;
       }
 
-      if (pretty >= 0)
+      if (pretty >= 0) {
+
+          System.out.println(pretty);
           total += 2;
+      }
 
       if (printNum >= 0)
           total += 1;
@@ -139,6 +143,15 @@ public class Project2 {
 
               else if (pretty == 0) {// pretty print
 
+                  if (args[1].equals("-")) { // pretty print
+
+                      createObj(args,index);
+                      System.out.println(airlineInfo.toString());
+                      airlineInfo.displayPretty();
+                  }
+
+                  else
+                      prettyFunc(args,args[pretty+1]);
               }
 
               else if (printNum == 0) { // print and read
@@ -153,81 +166,236 @@ public class Project2 {
           else if (total == 13){
 
               // parse file then print we know that read me cant be first
-              if(textRead == 0|| textRead == 2){
+              if(textRead == 0|| textRead == 1){
 
                   parseWrapper(args, args[textRead + 1], index);
+                  airlineInfo.sortMe();
 
-                  if (readThis == 2){
-                      // print only if i was able to parse
-                      return;
-                  }
               }
 
 
-              else{ // did something pretty now print
+              else{
 
-                  // do something pretty
-                  if (readThis ==2){
-                      return;
+                  if (pretty ==1 || pretty ==0){
+
+                      if (args[pretty+1].equals("-")){
+
+                          createObj(args,index);
+                          System.out.println(airlineInfo.toString());
+                          airlineInfo.displayPretty();
+                      }
+
+                      else
+                          prettyFunc(args, args[pretty + 1]);
                   }
               }
 
-              System.out.println(readMe);
+              if (readThis == 2)
+                  System.out.println(readMe);
+
+              else{
+
+                  createObj(args, index);
+                  airlineInfo.printnew();
+              }
           }
 
           else if (total == 14){
 
-              if (textRead>=0&&pretty >= 0){
+              // i am doing both
+              if (textRead>=0&&pretty >= 0){ // read file and pretty
 
                   parseWrapper(args,args[textRead+1],index);
-                  //DO SOMETHING PRETTY
+
+                  if (args[pretty+1].equals("-"))
+                      airlineInfo.displayPretty();
+
+                  // prints pretty to file
+                  else
+                      prettyFunc(args,args[pretty+1]);
 
                   return;
               }
 
-              else if(pretty < 0)
+              else if(pretty < 0) // only read text
                   parseWrapper(args,args[textRead+1],index);
 
               else{
 
-                  // DO SOMETHING PRETTY
+                  if (args[pretty+1].equals("-"))
+                      airlineInfo.displayPretty();
+
+                      // prints pretty to file
+                  else
+                      prettyFunc(args,args[pretty+1]);
               }
 
-              // ONLY PRINT IF SUCCESSFULL
-              if (readThis == 3){
+              // ONLY PRINT IF SUCCESSFULL, this case means read is last
+              if (readThis != 3){
 
+                  createObj(args, index);
+                  airlineInfo.printnew();
+                  System.out.println(readMe);
               }
+
+              else // takes care if read is 3rd
+              System.out.println(readMe);
           }
 
           else if(total ==15){
 
-              if (readThis == 4){ // read me is last parse file pretty print
+              if (readThis < 0) { // there is no readme
+
+                  // parse the file and pretty print then print the new flight
+                  parseWrapper(args,args[textRead+1],index);
+
+
+                  if (args[pretty+1].equals("-"))
+                      airlineInfo.displayPretty();
+
+                  else
+                      prettyFunc(args,args[pretty+1]);
+
+                  airlineInfo.printnew();
+
+              }
+
+              if (readThis == 4){ // readme is last parse file pretty print
 
                   parseWrapper(args,args[textRead+1],index);
                   // DO SOMETHING PRETTY
+              }
+
+              else if (readThis == 2){ // read is second
+
+                  if (textRead == 0) // check if text is first
+                      parseWrapper(args,args[textRead+1],index);
+
+                  // do something pretty because text is not first
+                  else{
+
+                      if (args[pretty+1].equals("-"))
+                          airlineInfo.displayPretty();
+
+                      else
+                          prettyFunc(args,args[pretty+1]);
+                  }
+
                   System.out.println(readMe);
                   return;
               }
 
-              else if (pretty<textRead){ // pretty is first, read is middle
-
-                  // DO SOMETHING PRETTY
-              }
-
-              else{ // parse text is first and read is middle
-
-                  parseWrapper(args,args[textRead+1],index);
-              }
-
-              System.out.println(readMe);
+              airlineInfo.printnew();
               return;
           }
 
           else if (total == 16){
 
-          }
+              // readme is second so we print first
+              if(readThis == 1){
 
+                  createObj(args, index);
+                  airlineInfo.printnew();
+                  System.out.println(readMe);
+              }
+
+              else if(readThis == 2){ // read me is third
+
+                  if (pretty < textRead){ // pretty read
+
+                      if (args[pretty+1].equals("-"))
+                          airlineInfo.displayPretty();
+
+                      else
+                          prettyFunc(args,args[pretty+1]);
+
+                  }
+
+                  else{ // text read
+
+                      parseWrapper(args,args[textRead+1],index);
+                  }
+
+                  System.out.println(readMe);
+                  return;
+              }
+
+              else if (readThis == 3){
+
+                  if (pretty < textRead){
+
+                      // do something pretty
+
+                      if (args[pretty+1].equals("-"))
+                          airlineInfo.displayPretty();
+
+                      else
+                          prettyFunc(args,args[pretty+1]);
+
+                      System.out.println(readMe);
+                  }
+
+                  else{
+
+                      parseWrapper(args,args[textRead+1],index);
+                  }
+
+                  airlineInfo.printnew();
+                  System.out.println(readMe);
+              }
+
+              else if (readThis == 4) { // there is no print
+
+                  parseWrapper(args,args[textRead+1],index);
+
+                  if (args[pretty+1].equals("-"))
+                      airlineInfo.displayPretty();
+
+                  else
+                      prettyFunc(args,args[pretty+1]);
+
+                  System.out.println(readMe);
+              }
+
+              else if (readThis == 5){
+
+                  parseWrapper(args,args[textRead+1],index);
+
+                  if (args[pretty+1].equals("-"))
+                      airlineInfo.displayPretty();
+
+                  else
+                      prettyFunc(args,args[pretty+1]);
+
+                  airlineInfo.printnew();
+                  System.out.println(readMe);
+              }
+
+              return;
+          }
       }
+  }
+
+
+  // writes to a file
+  public static void prettyFunc(String [] args,String fileName){
+
+      if (airlineInfo == null)
+          airlineInfo = new Airline(args,index);
+
+      soPretty = new PrettyPrinter();
+
+      if(soPretty.fileCheck(fileName)) {// the file exist
+
+          soPretty.dump(airlineInfo);
+      }
+
+      else {
+
+          soPretty.makeDir(fileName);
+          soPretty.dump(airlineInfo);
+      }
+
   }
 
 

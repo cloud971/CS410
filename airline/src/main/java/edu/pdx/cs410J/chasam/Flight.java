@@ -1,12 +1,13 @@
 package edu.pdx.cs410J.chasam;
 
 import edu.pdx.cs410J.AbstractFlight;
-import javafx.scene.input.DataFormat;
+import edu.pdx.cs410J.AirportNames;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.*;
 
 public class Flight extends AbstractFlight implements Comparable<Flight> {
 
@@ -19,8 +20,8 @@ public class Flight extends AbstractFlight implements Comparable<Flight> {
     private String aTime;
     private String dAMPM;
     private String aAMPM;
-    private Date startDate;
-    private Date leaveDate;
+    private Date appear;
+    private Date leave;
 
     public Flight(){
 
@@ -99,14 +100,43 @@ public class Flight extends AbstractFlight implements Comparable<Flight> {
   @Override
   public Date getDeparture(){
 
+      DateFormat b = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+      String bob;
 
-      return new Date();
+      try {
+
+          leave = b.parse(dep+" "+depTime+" "+dAMPM);
+          bob = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM,Locale.US).format(leave);
+
+
+      }catch (ParseException e){
+
+          System.out.println("cant parse");
+          return null;
+      }
+
+      return leave;
   }
 
   @Override
   public Date getArrival(){
 
-      return new Date();
+      DateFormat b = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+      String bob;
+
+      try {
+
+          appear = b.parse(dep+" "+depTime+" "+dAMPM);
+          bob = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM,Locale.US).format(appear);
+
+
+      }catch (ParseException e){
+
+          System.out.println("cant parse");
+          return null;
+      }
+
+      return appear;
   }
 
   public void setNum(int set){
@@ -143,7 +173,12 @@ public class Flight extends AbstractFlight implements Comparable<Flight> {
   @Override
     public int compareTo(Flight newTrip){
 
-      return 1;
+      int catchMe = this.src.compareTo(newTrip.src);
+
+      if (catchMe == 0)
+          catchMe = compareDate(newTrip);
+
+      return catchMe;
   }
 
   // original
@@ -156,4 +191,85 @@ public class Flight extends AbstractFlight implements Comparable<Flight> {
 
       return arrival+" "+aTime+" "+aAMPM;
   }
+
+  public int compareDate(Flight someF) {
+
+      DateFormat b = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+      Date myDate;
+      Date compareD;
+      int catchThis = 0;
+
+      try {
+
+          myDate = b.parse(getD());
+          compareD = b.parse(someF.getD());
+
+          catchThis = myDate.compareTo(compareD);
+
+      } catch (ParseException e) {
+          System.out.println("cant parse");
+      }
+
+      return catchThis;
+  }
+
+  public boolean compareEvery(Flight sameOne){
+
+      if (src.equals(sameOne.src) && compareDate(sameOne) == 0 && flightNumber.equals(sameOne.flightNumber) && dest.equals(sameOne.dest)){
+
+
+          DateFormat c = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+          Date myDate;
+          Date compareD;
+          int catchThis = 0;
+
+          try {
+
+              myDate = c.parse(getA());
+              compareD = c.parse(sameOne.getA());
+              catchThis = myDate.compareTo(compareD);
+
+          } catch (ParseException e) {
+              System.out.println("cant parse");
+          }
+
+          if (catchThis == 0)
+              return true;
+      }
+
+      return false;
+  }
+
+  public void makePretty(){
+
+      DateFormat b = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+      long duration = 0;
+
+      try {
+
+          String bye = arrival+" "+aTime+" "+aAMPM;
+          String imHere = dep+" "+depTime+" "+dAMPM;
+
+          Date m = b.parse(bye);
+          Date a = b.parse(imHere);
+
+
+          long hi = m.getTime() - a.getTime();
+          duration = hi/60000;
+
+          System.out.println(duration);
+
+      }catch (ParseException e){
+          System.out.println("cant parse");
+      }
+
+      System.out.println("Flight " +getNumber() + " departs "+ AirportNames.getName(src) + " at " + getDepartureString() +
+              " arrives at "+AirportNames.getName(dest)+" on "+getArrivalString()+" in "+duration+" minutes");
+  }
+
+  public String returnPretty(){
+
+      return "Flight " +getNumber() + " departs "+ AirportNames.getName(src) + " at " + getDepartureString() + " arrives at "+AirportNames.getName(dest)+" on "+getArrivalString();
+  }
 }
+

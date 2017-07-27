@@ -1,8 +1,8 @@
 package edu.pdx.cs410J.chasam;
 
 import edu.pdx.cs410J.AbstractAirline;
-import java.util.ArrayList;
-import java.util.Collection;
+
+import java.util.*;
 
 /**
  * Created by Yoda on 7/8/2017.
@@ -46,8 +46,17 @@ public class Airline extends AbstractAirline<Flight>{
     // adding a new flight from file
     public void toAdd(String [] newFlight){
 
+
         name = newFlight[0];
         Flight addFlight = new Flight(newFlight);
+
+        for(Flight x:Flight_List){
+
+            if (x.compareEvery(addFlight))
+                return;
+
+        }
+
         Flight_List.add(addFlight);
     }
 
@@ -69,15 +78,42 @@ public class Airline extends AbstractAirline<Flight>{
     public void mainAdd(String [] args, int index){
 
         Flight mainFlight = new Flight(args,index);
+
+        for(Flight x:Flight_List){
+
+            if (x.compareEvery(mainFlight))
+                return;
+
+        }
+
         Flight_List.add(mainFlight);
     }
 
-    public void printnew(){
+    public void printnew() {
 
 
-        Flight [] convertF = new Flight[Flight_List.size()];
+        Flight[] convertF = new Flight[Flight_List.size()];
         convertF = Flight_List.toArray(convertF);
 
-        System.out.println(convertF[convertF.length-1].toString());
+        System.out.println("ADDED FLIGHT: " + convertF[convertF.length - 1].toString());
+    }
+
+
+    // sorts the list
+    public void sortMe(){
+
+        List<Flight>convertF = new ArrayList<>(Flight_List);
+        Collections.sort(convertF);
+
+    }
+
+    public void displayPretty(){
+
+        List<Flight>convertF = new ArrayList<>(Flight_List);
+        Collections.sort(convertF);
+        for(Flight x:convertF){
+
+            x.makePretty();
+        }
     }
 }
