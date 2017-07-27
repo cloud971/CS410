@@ -77,11 +77,8 @@ public class Project2 {
               readThis = i;
       }
 
-      if (pretty >= 0) {
-
-          System.out.println(pretty);
+      if (pretty >= 0)
           total += 2;
-      }
 
       if (printNum >= 0)
           total += 1;

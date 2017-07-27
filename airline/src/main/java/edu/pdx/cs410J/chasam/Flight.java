@@ -257,8 +257,6 @@ public class Flight extends AbstractFlight implements Comparable<Flight> {
           long hi = m.getTime() - a.getTime();
           duration = hi/60000;
 
-          System.out.println(duration);
-
       }catch (ParseException e){
           System.out.println("cant parse");
       }
