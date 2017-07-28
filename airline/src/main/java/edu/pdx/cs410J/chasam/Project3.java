@@ -120,6 +120,10 @@ public class Project3 {
       if (noZone(args[index + 2], args[index + 6]))
           return;
 
+      args[index+5] = args[index+5].toUpperCase();
+      args[index+9] = args[index+9].toUpperCase();
+
+      System.out.println(args[index+5]);
       if (!Bad_Input(args, index)) {
 
 
@@ -504,7 +508,7 @@ public class Project3 {
 
       else if (!Check_time(Check_Err[index+4], Check_Err[index+5])){ // check for valid departure time format
 
-          System.out.println("Your departure time is invalid, ex: 5:23 AM");
+          System.out.println("Your departure time is invalid, ex: 5:23 am");
           return true;
       }
 
@@ -524,7 +528,7 @@ public class Project3 {
 
       else if (!Check_time(Check_Err[index+8],Check_Err[index+9])){ // check for valid departure time format
 
-          System.out.println("Your arrival time is invalid ex: 10:04");
+          System.out.println("Your arrival time is invalid ex: 10:04 am");
           return true;
       }
 
