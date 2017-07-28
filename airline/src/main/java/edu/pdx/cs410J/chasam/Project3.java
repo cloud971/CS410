@@ -123,7 +123,6 @@ public class Project3 {
       args[index+5] = args[index+5].toUpperCase();
       args[index+9] = args[index+9].toUpperCase();
 
-      System.out.println(args[index+5]);
       if (!Bad_Input(args, index)) {
 
 
