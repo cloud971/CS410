@@ -169,8 +169,14 @@ public class Project3 {
               if(textRead == 0|| textRead == 1){
 
                   parseWrapper(args, args[textRead + 1], index);
-                  airlineInfo.sortMe();
 
+                  if (readThis != 2){
+
+                      if (airlineInfo != null)
+                          airlineInfo.printnew();
+
+                      return;
+                  }
               }
 
 
@@ -223,11 +229,11 @@ public class Project3 {
 
               else{
 
-                  if (args[pretty+1].equals("-"))
+                  if (args[pretty+1].equals("-") && airlineInfo != null)
                       airlineInfo.displayPretty();
 
                       // prints pretty to file
-                  else
+                  else if(!args[pretty+1].equals("-"))
                       prettyFunc(args,args[pretty+1]);
               }
 
@@ -251,10 +257,10 @@ public class Project3 {
                   parseWrapper(args,args[textRead+1],index);
 
 
-                  if (args[pretty+1].equals("-"))
+                  if (args[pretty+1].equals("-") && airlineInfo!= null)
                       airlineInfo.displayPretty();
 
-                  else
+                  else if (!args[pretty+1].equals("-"))
                       prettyFunc(args,args[pretty+1]);
 
                   airlineInfo.printnew();
@@ -275,10 +281,10 @@ public class Project3 {
                   // do something pretty because text is not first
                   else{
 
-                      if (args[pretty+1].equals("-"))
+                      if (args[pretty+1].equals("-") && airlineInfo != null)
                           airlineInfo.displayPretty();
 
-                      else
+                      else if(!args[pretty+1].equals("-"))
                           prettyFunc(args,args[pretty+1]);
                   }
 
@@ -304,10 +310,10 @@ public class Project3 {
 
                   if (pretty < textRead){ // pretty read
 
-                      if (args[pretty+1].equals("-"))
+                      if (args[pretty+1].equals("-") && airlineInfo!= null)
                           airlineInfo.displayPretty();
 
-                      else
+                      else if(!args[pretty+1].equals("-"))
                           prettyFunc(args,args[pretty+1]);
 
                   }
@@ -341,6 +347,7 @@ public class Project3 {
                       parseWrapper(args,args[textRead+1],index);
                   }
 
+                  if (airlineInfo!= null)
                   airlineInfo.printnew();
                   System.out.println(readMe);
               }
@@ -362,12 +369,13 @@ public class Project3 {
 
                   parseWrapper(args,args[textRead+1],index);
 
-                  if (args[pretty+1].equals("-"))
+                  if (args[pretty+1].equals("-") && airlineInfo!=null)
                       airlineInfo.displayPretty();
 
-                  else
+                  else if (!args[pretty+1].equals("-"))
                       prettyFunc(args,args[pretty+1]);
 
+                  if (airlineInfo!= null)
                   airlineInfo.printnew();
                   System.out.println(readMe);
               }
