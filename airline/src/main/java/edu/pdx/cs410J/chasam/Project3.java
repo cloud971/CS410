@@ -207,12 +207,13 @@ public class Project3 {
 
                   parseWrapper(args,args[textRead+1],index);
 
-                  if (args[pretty+1].equals("-"))
+                  if (args[pretty+1].equals("-") && airlineInfo != null)
                       airlineInfo.displayPretty();
 
                   // prints pretty to file
-                  else
-                      prettyFunc(args,args[pretty+1]);
+                  else if (!args[pretty+1].equals("-"))
+                      prettyFunc(args, args[pretty + 1]);
+
 
                   return;
               }
@@ -326,10 +327,10 @@ public class Project3 {
 
                       // do something pretty
 
-                      if (args[pretty+1].equals("-"))
+                      if (args[pretty+1].equals("-")&& airlineInfo != null)
                           airlineInfo.displayPretty();
 
-                      else
+                      else if(!args[pretty+1].equals("-"))
                           prettyFunc(args,args[pretty+1]);
 
                       System.out.println(readMe);
@@ -348,10 +349,10 @@ public class Project3 {
 
                   parseWrapper(args,args[textRead+1],index);
 
-                  if (args[pretty+1].equals("-"))
+                  if (args[pretty+1].equals("-") && airlineInfo != null)
                       airlineInfo.displayPretty();
 
-                  else
+                  else if (!args[pretty+1].equals("-"))
                       prettyFunc(args,args[pretty+1]);
 
                   System.out.println(readMe);
@@ -557,6 +558,12 @@ public class Project3 {
 
       if (theDateSplit[2].length() != 4)
           return false;
+
+      for(int i = 0; i < theDateSplit.length; ++i){
+
+          if(!theDateSplit[i].matches("[0-9]+"))
+              return false;
+      }
 
       return true;
   }
