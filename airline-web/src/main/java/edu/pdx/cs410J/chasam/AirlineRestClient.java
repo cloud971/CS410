@@ -2,7 +2,6 @@ package edu.pdx.cs410J.chasam;
 
 import com.google.common.annotations.VisibleForTesting;
 import edu.pdx.cs410J.web.HttpRequestHelper;
-
 import java.io.IOException;
 import java.util.Map;
 
@@ -17,7 +16,6 @@ public class AirlineRestClient extends HttpRequestHelper
 {
     private static final String WEB_APP = "airline";
     private static final String SERVLET = "flights";
-
     private final String url;
 
 
@@ -50,13 +48,15 @@ public class AirlineRestClient extends HttpRequestHelper
     }
 
     public void addKeyValuePair(String key, String value) throws IOException {
-      Response response = postToMyURL("key", key, "value", value);
+
+      Response response = postToMyURL("name", key, "flight info", value);
       throwExceptionIfNotOkayHttpStatus(response);
     }
 
     @VisibleForTesting
     Response postToMyURL(String... keysAndValues) throws IOException {
-      return post(this.url, keysAndValues);
+
+        return post(this.url, keysAndValues);
     }
 
     public void removeAllMappings() throws IOException {
@@ -70,6 +70,20 @@ public class AirlineRestClient extends HttpRequestHelper
         throw new AppointmentBookRestException(code);
       }
       return response;
+    }
+
+    public void addMe(String flightName, String fNum, String theSRC, String theLeave, String theDest, String theArrival){
+
+        try {
+
+            Response response =  postToMyURL("name",flightName,"flightNumber",fNum,"src",
+                    theSRC,"departTime",theLeave, "dest",theDest,"arriveTime",theArrival);
+
+
+        }catch (IOException e){
+
+        }
+
     }
 
     private class AppointmentBookRestException extends RuntimeException {

@@ -17,7 +17,10 @@ import java.util.Map;
  * of how to use HTTP and Java servlets to store simple key/value pairs.
  */
 public class AirlineServlet extends HttpServlet {
+
+  private Airline someAirline;
   private final Map<String, String> data = new HashMap<>();
+  private String setName;
 
   /**
    * Handles an HTTP GET request from a client by writing the value of the key
@@ -47,27 +50,56 @@ public class AirlineServlet extends HttpServlet {
   @Override
   protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
   {
-      response.setContentType( "text/plain" );
 
-      String key = getParameter( "key", request );
-      if (key == null) {
-          missingRequiredParameter(response, "key");
+      String airportName = getParameter( "name", request );
+      if (airportName == null) {
+          missingRequiredParameter(response, "name");
           return;
       }
 
-      String value = getParameter( "value", request );
-      if ( value == null) {
-          missingRequiredParameter( response, "value" );
+      String flightNumber = getParameter( "flightNumber", request );
+      if ( flightNumber == null) {
+          missingRequiredParameter( response, "flightNumber" );
           return;
       }
 
-      this.data.put(key, value);
+      String src = getParameter("src", request);
+      if (src == null){
+          missingRequiredParameter( response, "src" );
+          return;
+      }
 
-      PrintWriter pw = response.getWriter();
-      pw.println(Messages.mappedKeyValue(key, value));
-      pw.flush();
+      String departTime = getParameter("departTime",request);
+      if (departTime == null){
+          missingRequiredParameter(response,"departTime");
+          return;
+      }
+
+      String dest = getParameter("dest",request);
+      if (dest == null){
+          missingRequiredParameter(response,"dest");
+          return;
+      }
+
+      String arrival = getParameter("arriveTime",request);
+      if (arrival == null){
+          missingRequiredParameter(response,"arriveTime");
+          return;
+      }
+
+      Flight newFlight = new Flight(flightNumber,src,departTime,dest,arrival);
+
+      if (someAirline == null){
+
+          someAirline = new Airline(airportName);
+          someAirline.addFlight(newFlight);
+      }
+
+      else
+          someAirline.newAdd(newFlight);
 
       response.setStatus( HttpServletResponse.SC_OK);
+
   }
 
   /**
@@ -107,14 +139,13 @@ public class AirlineServlet extends HttpServlet {
    * The text of the message is formatted with
    * {@link Messages#formatKeyValuePair(String, String)}
    */
+
   private void writeValue( String key, HttpServletResponse response ) throws IOException {
       String value = this.data.get(key);
 
       PrintWriter pw = response.getWriter();
       pw.println(Messages.formatKeyValuePair(key, value));
-
       pw.flush();
-
       response.setStatus( HttpServletResponse.SC_OK );
   }
 
