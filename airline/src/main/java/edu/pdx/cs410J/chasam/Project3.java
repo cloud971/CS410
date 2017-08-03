@@ -59,6 +59,7 @@ public class Project3 {
           return;
       }
 
+
       int pretty = -1;
       int readThis = -1;
       int printNum = -1;
