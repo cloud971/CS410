@@ -18,6 +18,8 @@ import static org.hamcrest.Matchers.equalTo;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AirlineRestClientIT {
+
+  /*
   private static final String HOSTNAME = "localhost";
   private static final String PORT = System.getProperty("http.port", "8080");
 
@@ -57,4 +59,5 @@ public class AirlineRestClientIT {
     assertThat(response.getContent(), containsString(Messages.missingRequiredParameter("key")));
     assertThat(response.getCode(), equalTo(HttpURLConnection.HTTP_PRECON_FAILED));
   }
+  */
 }
