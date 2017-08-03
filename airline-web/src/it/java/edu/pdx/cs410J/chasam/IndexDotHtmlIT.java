@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.whitlock;
+package edu.pdx.cs410J.chasam;
 
 import edu.pdx.cs410J.web.HttpRequestHelper;
 import edu.pdx.cs410J.web.HttpRequestHelper.Response;

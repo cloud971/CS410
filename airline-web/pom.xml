@@ -159,7 +159,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.pdx.cs410J.whitlock.Project4</mainClass>
+              <mainClass>edu.pdx.cs410J.chasam.Project4</mainClass>
             </manifest>
           </archive>
         </configuration>

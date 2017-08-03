@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.whitlock;
+package edu.pdx.cs410J.chasam;
 
 import org.junit.Test;
 
