@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.*;
 
+
 public class Flight extends AbstractFlight implements Comparable<Flight> {
 
     private String flightNumber;

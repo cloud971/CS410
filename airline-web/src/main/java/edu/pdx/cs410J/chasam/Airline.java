@@ -2,9 +2,7 @@ package edu.pdx.cs410J.chasam;
 import edu.pdx.cs410J.AbstractAirline;
 import java.util.*;
 
-/**
- * Created by Yoda on 7/8/2017.
- */
+
 public class Airline extends AbstractAirline<Flight>{
 
     private Collection<Flight> Flight_List = new ArrayList<>();
