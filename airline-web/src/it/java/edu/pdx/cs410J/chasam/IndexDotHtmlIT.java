@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 public class IndexDotHtmlIT {
   private static final String HOSTNAME = "localhost";
   private static final String PORT = System.getProperty("http.port", "8080");
-
+/*
   @Test
   public void indexDotHtmlExists() throws IOException {
     Response indexDotHtml = fetchIndexDotHtml();
@@ -43,4 +43,5 @@ public class IndexDotHtmlIT {
       return get(this.url);
     }
   }
+  */
 }

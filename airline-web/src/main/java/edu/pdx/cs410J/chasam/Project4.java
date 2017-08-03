@@ -46,6 +46,7 @@ public class Project4 {
         if(args.length == 0) {
 
             System.out.println("You are missing arguments");
+            return;
         }
 
         //exit first is read me
