@@ -119,18 +119,35 @@ public class Project4 {
             return;
 
         // i want to search
-        if (args.length == 8 && searching > -1){
+        if (searching > -1) {
 
-            if (theHost > -1 && thePort > -1) {
+            // min length is 8 and 9 for search
+            if (args.length == 8 || args.length == 9) {
 
-                setPort(args[thePort + 1]);
-                client = new AirlineRestClient(args[theHost+1],port);
-                find(args);
+                // if there is a port
+                if (theHost > -1 && thePort > -1) {
+
+                    setPort(args[thePort + 1]);
+                    client = new AirlineRestClient(args[theHost + 1], port);
+                    find(args);
+
+                }
+
+                // wrong args
+                else {
+
+                    System.out.println("Incorrect number of arguments");
+                    return;
+                }
+
+                if (reading > -1)
+                    System.out.println();
+
+                return;
             }
-
-            return;
         }
 
+        //looking
         if(total != args.length) {
 
             System.out.println("incorrect number of arguments");
@@ -211,9 +228,18 @@ public class Project4 {
                 if (printMe > -1) { // print
 
                     setPort(args[thePort + 1]);
-                    adding(args);
-                    createObj(args,index);
-                    airlineInfo.printnew();
+
+                    if (adding(args)) {
+
+                        createObj(args, index);
+                        airlineInfo.printnew();
+                    }
+
+                    else {
+
+                        System.out.println("Error adding flight");
+                        return;
+                    }
                 }
 
                 else // read
@@ -234,9 +260,24 @@ public class Project4 {
             if (searching < 0){
 
                 setPort(args[thePort+1]);
-                adding(args);
-                createObj(args,index);
-                airlineInfo.printnew();
+
+                if (printMe > -1) { // print
+
+                    setPort(args[thePort + 1]);
+
+                    if (adding(args)) {
+
+                        createObj(args, index);
+                        airlineInfo.printnew();
+                    }
+
+                    else {
+
+                        System.out.println("Error adding flight");
+                        return;
+                    }
+                }
+
                 System.out.println(readMe);
             }
 
@@ -249,7 +290,12 @@ public class Project4 {
             if (reading < 0 && printMe < 0){
 
                 setPort(args[thePort+1]);
-                adding(args);
+                if(!adding(args)) {
+
+                    System.out.println("error adding flight");
+                    return;
+                }
+
                 find(args);
             }
 
@@ -262,13 +308,24 @@ public class Project4 {
         if (args.length == 19 || args.length == 20){
 
             setPort(args[thePort+1]);
-            adding(args);
+            boolean added = false;
+
+            added = adding(args);
             find(args);
 
             if (printMe > -1){
 
-                createObj(args,index);
-                airlineInfo.printnew();
+                if (added == true) {
+
+                    createObj(args, index);
+                    airlineInfo.printnew();
+                }
+
+                else {
+
+                    System.out.println("Error adding flight");
+                    return;
+                }
             }
 
             if (reading > -1)
@@ -334,24 +391,21 @@ public class Project4 {
         searchName = treasure[searching+1];
         searchD = treasure[searching+3];
         searchSrc = treasure[searching+2];
-
-        try {
-
-            client.getMe(searchName, searchSrc, searchD);
-
-        }catch (IOException e){
-
-        }
+        client.getMe(searchName, searchSrc, searchD);
 
     }
 
     // adding flight to airline
-    public static void adding(String [] args){
+    public static boolean adding(String [] args){
 
         client = new AirlineRestClient(args[theHost+1], port);
         String leave = args[index+3]+" "+args[index+4]+" "+args[index+5];
         String theArrival = args[index+7]+" "+args[index+8]+" "+args[index+9];
-        client.addMe(args[index], args[index+1],args[index+2],leave,args[index+6],theArrival);
+
+        if (client.addMe(args[index], args[index+1],args[index+2],leave,args[index+6],theArrival))
+            return true;
+
+        return false;
     }
 
 
@@ -381,7 +435,6 @@ public class Project4 {
     {
         PrintStream err = System.err;
         err.println("** " + message);
-
         System.exit(1);
     }
 

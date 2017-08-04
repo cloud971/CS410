@@ -71,30 +71,44 @@ public class AirlineRestClient extends HttpRequestHelper
         if (code != HTTP_OK) {
             throw new AppointmentBookRestException(code);
         }
+
         return response;
     }
 
-    public void addMe(String flightName, String fNum, String theSRC, String theLeave, String theDest, String theArrival){
+    public boolean addMe(String flightName, String fNum, String theSRC, String theLeave, String theDest, String theArrival){
 
         try {
 
             Response response =  postToMyURL("name",flightName,"flightNumber",fNum,"src",
                     theSRC,"departTime",theLeave, "dest",theDest,"arriveTime",theArrival);
 
+            if (response.getContent().equals("Success"))
+                return true;
+
+            return false;
+
 
         }catch (IOException e){
 
+            System.out.println("server is down");
+                return false;
         }
+
     }
 
     // gets from user
-    public void getMe(String aName, String src3, String dest3)throws IOException{
+    public void getMe(String aName, String src3, String dest3){
 
-        Response response = get(this.url, "name",aName,"src",src3,"dest",dest3);
-        throwExceptionIfNotOkayHttpStatus(response);
-        String content = response.getContent();
+        try {
 
-        System.out.println(content);
+            Response response = get(this.url, "name",aName,"src",src3,"dest",dest3);
+            throwExceptionIfNotOkayHttpStatus(response);
+            String content = response.getContent();
+            System.out.println(content);
+
+        }catch (IOException e){
+            System.out.println("Server is down");
+        }
     }
 
 

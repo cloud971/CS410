@@ -127,10 +127,20 @@ public class AirlineServlet extends HttpServlet {
 
             someAirline = new Airline(airportName);
             someAirline.addFlight(newFlight);
+            response.getWriter().println("Success");
         }
 
-        else
+        else {
+
+            if (!someAirline.getName().equals(airportName)) {
+
+                response.getWriter().println("Fail");
+                return;
+            }
+
             someAirline.newAdd(newFlight);
+            response.getWriter().println("Success");
+        }
 
         response.setStatus( HttpServletResponse.SC_OK);
     }
