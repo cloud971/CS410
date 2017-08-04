@@ -141,4 +141,29 @@ public class Airline extends AbstractAirline<Flight>{
         Flight_List.add(objF);
         return true;
     }
+
+    public String searchDestSrc(String theSrc, String theDest){
+
+        List<Flight>convertF = new ArrayList<>(Flight_List);
+        Collections.sort(convertF);
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Flight x:Flight_List){
+
+            if (x.getDestination().equals(theDest) && x.getSource().equals(theSrc)){
+
+                sb.append(x.returnPretty()).append("\n");
+            }
+
+            System.out.println(x.getDestination()+ theDest);
+        }
+
+        return sb.toString();
+    }
+
+    public int retrieveNUM(){
+
+        return Flight_List.size();
+    }
 }

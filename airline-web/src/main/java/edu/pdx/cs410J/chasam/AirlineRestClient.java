@@ -1,6 +1,9 @@
 package edu.pdx.cs410J.chasam;
 import com.google.common.annotations.VisibleForTesting;
 import edu.pdx.cs410J.web.HttpRequestHelper;
+import sun.security.ssl.SSLSocketImpl;
+
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.util.Map;
 import static java.net.HttpURLConnection.HTTP_OK;
@@ -10,6 +13,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
  * an example of how to make gets and posts to a URL.  You'll need to change it
  * to do something other than just send key/value pairs.
  */
+
 public class AirlineRestClient extends HttpRequestHelper
 {
     private static final String WEB_APP = "airline";
@@ -81,8 +85,18 @@ public class AirlineRestClient extends HttpRequestHelper
         }catch (IOException e){
 
         }
-
     }
+
+    // gets from user
+    public void getMe(String aName, String src3, String dest3)throws IOException{
+
+        Response response = get(this.url, "name",aName,"src",src3,"dest",dest3);
+        throwExceptionIfNotOkayHttpStatus(response);
+        String content = response.getContent();
+
+        System.out.println(content);
+    }
+
 
     private class AppointmentBookRestException extends RuntimeException {
         public AppointmentBookRestException(int httpStatusCode) {

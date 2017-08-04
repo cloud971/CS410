@@ -26,18 +26,54 @@ public class AirlineServlet extends HttpServlet {
      * parameter is not specified, all of the key/value pairs are written to the
      * HTTP response.
      */
+
+
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
         response.setContentType( "text/plain" );
 
-        String key = getParameter( "key", request );
-        if (key != null) {
-            writeValue(key, response);
 
-        } else {
-            writeAllMappings(response);
+        String airlineName = getParameter( "name", request );
+        if (airlineName == null) {
+            missingRequiredParameter(response, "name");
+            return;
         }
+
+        String source = getParameter( "src", request );
+        if ( source == null) {
+            missingRequiredParameter( response, "src" );
+            return;
+        }
+
+        String destination = getParameter( "dest", request );
+        if ( destination == null) {
+            missingRequiredParameter( response, "dest" );
+            return;
+        }
+
+        // i have an airline
+        if(someAirline != null){
+
+            // the name doesnt match
+            if (!nameExist(airlineName))
+                response.getWriter().println("No matching airline name");
+
+            // the name matches
+            else {
+
+                String pretty = findMe(source, destination);
+                response.getWriter().println(pretty);
+            }
+
+            return;
+        }
+
+        else
+            someAirline = new Airline(airlineName);
+
+        response.setStatus( HttpServletResponse.SC_OK);
+
     }
 
     /**
@@ -97,7 +133,6 @@ public class AirlineServlet extends HttpServlet {
             someAirline.newAdd(newFlight);
 
         response.setStatus( HttpServletResponse.SC_OK);
-
     }
 
     /**
@@ -186,5 +221,39 @@ public class AirlineServlet extends HttpServlet {
     @VisibleForTesting
     String getValueForKey(String key) {
         return this.data.get(key);
+    }
+
+    // check to see if airline is there
+    public boolean nameExist(String theName){
+
+        // no match
+        if (!someAirline.getName().equals(theName))
+            return  false;
+
+        return true;
+    }
+
+    // message airline doesnt exist
+
+    private void nonAirlineName(String airlineName, HttpServletResponse response) throws IOException {
+
+        String message = "Airline not named " + airlineName;
+        response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
+
+    }
+
+
+    // look for
+    public String findMe(String lookSRC, String lookDEST){
+
+
+        String looking = someAirline.searchDestSrc(lookSRC,lookDEST);
+
+        System.out.println(someAirline.retrieveNUM());
+        if (looking.length() == 0)
+            return "No matching flights";
+
+
+        return "Fligths between "+lookSRC+" and "+lookDEST+"" +"\n"+looking;
     }
 }

@@ -1,5 +1,7 @@
 package edu.pdx.cs410J.chasam;
 import edu.pdx.cs410J.AirportNames;
+
+import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,6 +46,7 @@ public class Project4 {
         if(args.length == 0) {
 
             System.out.println("You are missing arguments");
+            return;
         }
 
         //exit first is read me
@@ -115,6 +118,19 @@ public class Project4 {
         if(searching > -1 && args.length < 8)
             return;
 
+        // i want to search
+        if (args.length == 8 && searching > -1){
+
+            if (theHost > -1 && thePort > -1) {
+
+                setPort(args[thePort + 1]);
+                client = new AirlineRestClient(args[theHost+1],port);
+                find(args);
+            }
+
+            return;
+        }
+
         if(total != args.length) {
 
             System.out.println("incorrect number of arguments");
@@ -173,8 +189,11 @@ public class Project4 {
         if (args.length == 14){
 
             // adding to server
-            if (theHost > -1 && thePort > -1)
+            if (theHost > -1 && thePort > -1) {
+
+                setPort(args[thePort + 1]);
                 adding(args);
+            }
 
             else
                 System.out.println("Missing arguments");
@@ -191,6 +210,7 @@ public class Project4 {
 
                 if (printMe > -1) { // print
 
+                    setPort(args[thePort + 1]);
                     adding(args);
                     createObj(args,index);
                     airlineInfo.printnew();
@@ -213,6 +233,7 @@ public class Project4 {
             // doing all options but search
             if (searching < 0){
 
+                setPort(args[thePort+1]);
                 adding(args);
                 createObj(args,index);
                 airlineInfo.printnew();
@@ -227,6 +248,7 @@ public class Project4 {
 
             if (reading < 0 && printMe < 0){
 
+                setPort(args[thePort+1]);
                 adding(args);
                 find(args);
             }
@@ -235,6 +257,22 @@ public class Project4 {
                 System.out.println("Missing args");
 
             return;
+        }
+
+        if (args.length == 19 || args.length == 20){
+
+            setPort(args[thePort+1]);
+            adding(args);
+            find(args);
+
+            if (printMe > -1){
+
+                createObj(args,index);
+                airlineInfo.printnew();
+            }
+
+            if (reading > -1)
+                System.out.println(readMe);
         }
 
         /*
@@ -276,11 +314,34 @@ public class Project4 {
     }
 
 
+    // find search
     public static void find(String [] treasure){
 
+
+        if(AirportNames.getName(treasure[searching+2]) == null){
+
+            System.out.println("invalid src");
+            return;
+        }
+
+
+        if (AirportNames.getName(treasure[searching+3]) == null){
+
+            System.out.println("invalid dest");
+            return;
+        }
+
         searchName = treasure[searching+1];
-        searchD = treasure[searching+2];
-        searchSrc = treasure[searching+3];
+        searchD = treasure[searching+3];
+        searchSrc = treasure[searching+2];
+
+        try {
+
+            client.getMe(searchName, searchSrc, searchD);
+
+        }catch (IOException e){
+
+        }
 
     }
 
@@ -304,7 +365,7 @@ public class Project4 {
         } catch (NumberFormatException ex) {
 
             usage("Port \"" + portString + "\" must be an integer");
-            return;
+            System.exit(1);
         }
     }
 
