@@ -5,13 +5,10 @@ import edu.pdx.cs410J.chasam.client.Airline;
 import edu.pdx.cs410J.chasam.client.Flight;
 import edu.pdx.cs410J.chasam.client.AirlineService;
 
-/**
- * The server-side implementation of the Airline service
- */
 public class AirlineServiceImpl extends RemoteServiceServlet implements AirlineService
 {
   @Override
-  public Airline getAirline() {
+  public Airline getAirline(String info) {
     Airline airline = new Airline();
     airline.addFlight(new Flight());
     return airline;

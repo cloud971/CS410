@@ -15,11 +15,15 @@ import org.junit.Test;
  * And since this test code is compiled into JavaScript, you can't use hamcrest matchers.  :(
  */
 public class AirlineGwtIT extends GWTTestCase {
+
+
   @Override
   public String getModuleName() {
     return "edu.pdx.cs410J.chasam.AirlineIntegrationTests";
   }
 
+
+  /*
   @Test
   public void testClickingShowAirlineButtonAlertsWithAirlineInformation() {
     final CapturingAlerter alerter = new CapturingAlerter();
@@ -49,6 +53,7 @@ public class AirlineGwtIT extends GWTTestCase {
     delayTestFinish(1000);
   }
 
+  /*
   @Test
   public void testClickingShowUndeclaredExceptionButtonAlertsWithExpectedMessage() {
     final CapturingAlerter alerter = new CapturingAlerter();
@@ -157,6 +162,7 @@ public class AirlineGwtIT extends GWTTestCase {
    * @param button
    *        The button to click
    */
+
   private void click(final Button button) {
     assertNotNull("Button is null", button);
     NativeEvent event = Document.get().createClickEvent(0, 0, 0, 0, 0, false, false, false, false);
