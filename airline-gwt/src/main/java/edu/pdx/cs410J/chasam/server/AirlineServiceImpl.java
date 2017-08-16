@@ -7,11 +7,36 @@ import edu.pdx.cs410J.chasam.client.AirlineService;
 
 public class AirlineServiceImpl extends RemoteServiceServlet implements AirlineService
 {
+  private Airline airlineInfo = new Airline();
+
   @Override
   public Airline getAirline(String info) {
-    Airline airline = new Airline();
-    airline.addFlight(new Flight());
-    return airline;
+
+      return airlineInfo;
+  }
+
+  @Override
+  public String add(String theName, String flightDigit,String sourceCode, String dateOfLeave,String destinCode,String dateArrival){
+
+
+    Flight newFlight = new Flight(flightDigit,sourceCode,dateOfLeave,destinCode,dateArrival);
+
+    if(airlineInfo.retrieveNUM() == 0 || airlineInfo.getName() == null){
+
+      airlineInfo.setName(theName);
+      airlineInfo.addFlight(newFlight);
+
+      return "true";
+    }
+
+    if(airlineInfo.getName().equals(theName)){
+
+      airlineInfo.newAdd(newFlight);
+      return "true";
+
+    }
+
+    return "false";
   }
 
   @Override

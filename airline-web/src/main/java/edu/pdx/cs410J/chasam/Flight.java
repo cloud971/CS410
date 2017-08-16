@@ -256,21 +256,11 @@ public class Flight extends AbstractFlight implements Comparable<Flight> {
         DateFormat b = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
         long duration = 0;
 
-        try {
-
-            String bye = arrival+" "+aTime+" "+aAMPM;
-            String imHere = dep+" "+depTime+" "+dAMPM;
-
-            Date m = b.parse(bye);
-            Date a = b.parse(imHere);
 
 
-            long hi = m.getTime() - a.getTime();
-            duration = hi/60000;
+        long hi = m.getTime() - a.getTime();
+        duration = hi/60000;
 
-        }catch (ParseException e){
-            System.out.println("cant parse");
-        }
 
         System.out.println("Flight " +getNumber() + " departs "+ AirportNames.getName(src) + " at " + getDepartureString() +
                 " arrives at "+AirportNames.getName(dest)+" on "+getArrivalString()+" in "+duration+" minutes");

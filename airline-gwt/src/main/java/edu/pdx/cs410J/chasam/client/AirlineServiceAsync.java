@@ -12,6 +12,7 @@ public interface AirlineServiceAsync {
    */
   void getAirline(String someName, AsyncCallback<Airline> async);
 
+  void add(String airlineName, String flightDigit,String sourceCode, String dateOfLeave,String destinCode,String dateArrival, AsyncCallback<String> async);
   /**
    * Always throws an exception so that we can see how to handle uncaught
    * exceptions in GWT.

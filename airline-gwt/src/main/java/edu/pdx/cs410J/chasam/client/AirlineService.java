@@ -19,6 +19,8 @@ public interface AirlineService extends RemoteService {
    */
   void throwUndeclaredException();
 
+
+  String add(String airlineName, String flightDigit,String sourceCode, String dateOfLeave,String destinCode,String dateArrival);
   /**
    * Always throws a declared exception so that we can see GWT handles it.
    */
